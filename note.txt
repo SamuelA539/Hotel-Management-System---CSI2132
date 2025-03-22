@@ -1,0 +1,8 @@
+Servlet test app is web part
+
+Schema created open to changes
+
+TODO:
+    DB population
+    DB queries
+    DB modifications
