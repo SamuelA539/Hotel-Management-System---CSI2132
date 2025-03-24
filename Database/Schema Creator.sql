@@ -15,6 +15,7 @@ CREATE TABLE HotelChains(
 ChainID Serial not null, --Numeric
 Office_address VARCHAR(150) not null, --!!
 Num_of_hotels integer,
+Chain_name VARCHAR(100) NOT NULL,
 Constraint hotelNum check (Num_of_hotels > 0),
 Primary Key(ChainID)
 );
