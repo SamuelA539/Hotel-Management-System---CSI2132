@@ -10,7 +10,7 @@ SET search_path = project;
 --     Objects    --
 --------------------
 
-drop if exists HotelChains;
+drop table if exists HotelChains;
 CREATE TABLE HotelChains(
 ChainID Serial not null, --Numeric
 Office_address VARCHAR(150) not null, --!!
@@ -20,24 +20,24 @@ Constraint hotelNum check (Num_of_hotels > 0),
 Primary Key(ChainID)
 );
 
-drop if exists HotelChainEmails;
+drop table if exists HotelChainEmails;
 create table HotelChainEmails (
 hotelChainID Serial not null,
 email Varchar(100) not null,
-Foreign key(hotelChainID) references HotelChain,
+Foreign key(hotelChainID) references HotelChains,
 Primary key(hotelChainID, email)
 );
 
 --flatten more?
-drop if exists HotelChainNumbers;
+drop table if exists HotelChainNumbers;
 create table HotelChainNumbers (
 hotelChainID Serial not null,
-phoneNum Varchar(15) not null,
-Foreign key(hotelChainID) references HotelChain,
+phoneNum Varchar(20) not null,
+Foreign key(hotelChainID) references HotelChains,
 Primary key(hotelChainID, phoneNum)
 );
 
-drop if exists Hotels;
+drop table if exists Hotels;
 create table Hotels(
 hotelID Serial not null,
 numRooms Integer, 
@@ -45,10 +45,10 @@ address varchar(150) not null, --?
 hotelChain_id Serial not null,
 constraint numHotelRooms check (numRooms > 0 ),
 Primary Key(hotelID), 	--+ hotelchainID?
-Foreign Key(hotelChain_id) references HotelChain
+Foreign Key(hotelChain_id) references HotelChains
 );
 
-drop if exists HotelEmails;
+drop table if exists HotelEmails;
 create table HotelEmails (
 hotelID Serial not null,
 email varchar(75) not null,
@@ -56,16 +56,16 @@ Primary Key(hotelID, email),
 Foreign Key(hotelID) references Hotels
 );
 
-drop if exists HotelNumbers;
+drop table if exists HotelNumbers;
 create table HotelNumbers (
 hotelID Serial not null,
-phoneNum varchar(15) not null,
+phoneNum varchar(20) not null,
 Primary Key(hotelID, phoneNum),
 Foreign Key(hotelID) references Hotels
 );
 
 -- TODO Constraints
-drop if exists Rooms;
+drop table if exists Rooms;
 create table Rooms(
 room_number Integer, 
 price numeric(8,2), 
@@ -75,29 +75,30 @@ is_extendable boolean not null,
 is_damaged boolean not null,
 hotel_id Serial,
 
-Constraint minCapacity check (capacity not null),
+Constraint minCapacity check (capacity is not null),
 Constraint viewType check (view_type = 'sea' or view_type = 'mountain'),
 Constraint minRoomNum check (room_number > 0),
 Constraint minPrice check (price >= 0),
 
 
 Primary Key(hotel_id, room_number),
-Foreign Key(hotel_id) references Hotel
+Foreign Key(hotel_id) references Hotels
 );
 
+drop table if exists RoomAmenities;
 create table RoomAmenities(
 roomNum Integer,
 hotelID Serial,
 amenities varchar(150),
 Primary key(hotelID, roomNum, amenities),
-Foreign key(hotelID, roomNum) references Room
+Foreign key(hotelID, roomNum) references Rooms
 );
 
 
 --------------------
 --     Users      --
 --------------------
-drop if exists Employee;
+drop table if exists Employee;
 create table Employee(
 EmployeeID Serial, 
 firstName varchar(50) not null,
@@ -108,11 +109,11 @@ ID_type varchar(10) not null,
 personalID Numeric not null,
 hotel_id Serial,
 Primary Key(EmployeeID),
-Foreign Key(hotel_id) references Hotel
+Foreign Key(hotel_id) references Hotels
 );
 
 --multiple roles per employee?
-drop if exists EmployeeRoles;
+drop table if exists EmployeeRoles;
 create table EmployeeRoles(
 EmployeeID serial,
 role varchar(75),
@@ -120,7 +121,7 @@ Primary key(EmployeeID, role),
 foreign key (EmployeeID) references Employee
 ); 
 
-drop if exists Customer;
+drop table if exists Customer;
 create table Customer(
 customerID Serial,  
 firstName varchar(30) not null,
@@ -140,7 +141,7 @@ Primary Key(customerID)
 --     Events     --
 --------------------
 -- make times into timestamps + double check
-drop if exists Bookings;
+drop table if exists Bookings;
 create table Bookings(
  bookingID Serial,
  check_in_date date not null, 
@@ -155,7 +156,7 @@ create table Bookings(
  --constraint validBooking check ()
  );
 
-drop if exists Rentings;
+drop table if exists Rentings;
 create table Rentings(
 rentalID serial, 
 employee_id serial not null, 
@@ -166,8 +167,8 @@ customer_id Serial not null,
 
 Primary Key(rentalID),
 Foreign Key(employee_id) references Employee,
-Foreign Key(hotelID, room_num) references Room,
-Foreign Key(booking_id) references Booking,
+Foreign Key(hotelID, room_num) references Rooms,
+Foreign Key(booking_id) references Bookings,
 Foreign Key(customer_id) references Customer
 );
 
@@ -176,7 +177,7 @@ Foreign Key(customer_id) references Customer
 --------------------
 --    Archive     --
 --------------------
-drop if exists Archive;
+drop table if exists Archive;
 create table Archive(
  archiveID varchar(15),  --ID
  archive_date date,
@@ -187,7 +188,7 @@ create table Archive(
 --------------------
 --   Relations    --
 --------------------
-drop if exists Owns;
+drop table if exists Owns;
 create table Owns(
  chainID Serial,
  hotelID Serial, 
@@ -196,6 +197,6 @@ create table Owns(
  Constraint minStars check (0 < star_rating and star_rating < 6),
  
  Primary Key(chainID, hotelID),
- Foreign Key(chainID) references HotelChain,
- Foreign Key(hotelID) references Hotel
+ Foreign Key(chainID) references HotelChains,
+ Foreign Key(hotelID) references Hotels
 );
