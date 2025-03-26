@@ -2,7 +2,8 @@ Servlet test app is web part
 
 Schema created open to changes
 
++ hotel rooms
 TODO:
-    DB population
-    DB queries
-    DB modifications
+    DB queries: labs 3-6
+    DB modifications(triggers): lab 9
+    DB indexing: lab 10
