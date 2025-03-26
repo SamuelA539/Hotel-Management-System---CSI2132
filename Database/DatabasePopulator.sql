@@ -141,7 +141,7 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(2, 207, 5),
 	(2, 208, 5);
 
---todo Varry data 
+
 Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) Values
 --Paris
 	(395, 457.00, 2, 'mountain', false, true, 201),
@@ -230,7 +230,7 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(3, 306, 4),
 	(3, 307, 5),
 	(3, 308, 5);
---todo Varry data 
+
 Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) Values
 --Tokyo
 	(100, 131.00, 2, 'sea', false, true, 301),
@@ -328,7 +328,7 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(4, 406, 4),
 	(4, 407, 5),
 	(4, 408, 2);
---todo Varry data 
+
 Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) Values
 --Paris
 	(100, 145.00, 2, 'sea', false, true, 401),
@@ -407,7 +407,7 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(5, 506, 4),
 	(5, 507, 5),
 	(5, 508, 5);
---todo vary data
+
 Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) Values
 --Paris
 	(100, 320.00, 2, 'sea', false, true, 501),
@@ -460,7 +460,7 @@ Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_dama
 
 
 
-
+--TODO if needed?
 --Hotel Room Amenitites
 	--Insert INTO RoomAmenitie(roomNum, hotelID, Amenities) Values
 		--
