@@ -76,7 +76,7 @@ is_damaged boolean not null,
 hotel_id Serial,
 
 Constraint minCapacity check (capacity is not null),
-Constraint viewType check (view_type = 'sea' or view_type = 'mountain'),
+Constraint viewType check (view_type in ('sea', 'mountain', 'city', 'ocean')),
 Constraint minRoomNum check (room_number > 0),
 Constraint minPrice check (price >= 0),
 
