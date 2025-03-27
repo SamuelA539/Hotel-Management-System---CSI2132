@@ -6,3 +6,5 @@ Schema created open to changes
 TODO:
     DB indexing: lab 10
     DB Views
+    DB connection
+    toString
