@@ -42,7 +42,6 @@ INSERT INTO HotelChainNumber (hotelChainID, phoneNum) VALUES
 --------------------------------------------------------------
 
 
-
 -- -- inserting the hotels of the chain Grand Hotels
 INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
     ('101', 120, '1 Central Park West', 'New York', 'USA', '1'),
@@ -64,56 +63,6 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(1, 106, 4),
 	(1, 107, 5),
 	(1, 108, 5);
-
-Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) Values
---New York
-	(100, 245.00, 2, 'sea', false, true, 101),
-	(302, 343.00, 3, 'sea', true, true, 101),
-	(383, 342.00, 4, 'sea', false, false, 101),
-	(087, 132.00, 5, 'sea', true, false, 101),
-	(294, 263.00, 6, 'sea', false, true, 101),
-
-	(314, 436.00, 2, 'sea', false, true, 102),
-	(505, 545.00, 3, 'sea', false, true, 102),
-	(439, 464.00, 4, 'sea', false, false, 102),
-	(313, 324.00, 5, 'sea', true, false, 102),
-	(662, 756.00, 6, 'sea', false, true, 102),
---Miami
-	(889, 755.00, 2, 'sea', false, true, 103),
-	(937, 975.00, 3, 'sea', false, true, 103),
-	(439, 670, 4, 'sea', true, false, 103),
-	(249, 353.00, 5, 'sea', true, false, 103),
-	(938, 1898.00, 6, 'sea', false, true, 103),
---Los Angeles
-	(293, 324.00, 2, 'mountain', false, true, 104),
-	(352, 435.00, 3, 'sea', false, true, 104),
-	(532, 535.00, 4, 'mountain', false, true, 104),
-	(898, 864.00, 5, 'mountain', true, false, 104),
-	(073, 234.00, 6, 'sea', true, true, 104),
---Chicago
-	(323, 377.00, 2, 'mountain', true, true, 105),
-	(293, 425.00, 3, 'mountain', true, true, 105),
-	(995, 978.00, 4, 'mountain', false, false, 105),
-	(241, 446.00, 5, 'mountain', true, false, 105),
-	(742, 873.00, 6, 'mountain', false, true, 105),
---Toronto
-	(745, 743.00, 2, 'sea', false, true, 106),
-	(754, 785.00, 3, 'sea', false, true, 106),
-	(266, 335.00, 4, 'sea', false, false, 106),
-	(235, 484.00, 5, 'sea', true, false, 106),
-	(964, 1956.00, 6, 'sea', false, true, 106),
---melbourne
-	(724, 758.00, 2, 'sea', false, true, 107),
-	(643, 699.00, 3, 'mountain', false, true, 107),
-	(439, 786.00, 4, 'sea', false, false, 107),
-	(213, 364.00, 5, 'mountain', true, false, 107),
-	(232, 532.00, 6, 'sea', false, true, 107),
---singapore
-	(248, 265.00, 2, 'sea', false, true, 108),
-	(251, 267.00, 3, 'sea', false, true, 108),
-	(892, 956.00, 4, 'sea', true, false, 108),
-	(517, 476.00, 5, 'sea', true, false, 108),
-	(393, 577.00, 6, 'sea', false, true, 108);
 
 
 --------------------------------------------------------------
@@ -142,69 +91,6 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(2, 208, 5);
 
 
-Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) Values
---Paris
-	(395, 457.00, 2, 'mountain', false, true, 201),
-	(255, 246.00, 3, 'mountain', true, true, 201),
-	(263, 234.00, 4, 'mountain', false, false, 201),
-	(734, 784.00, 5, 'mountain', true, false, 201),
-	(523, 636.00, 6, 'mountain', false, true, 201),
-
-	(865, 757.00, 2, 'mountain', false, true, 202),
-	(024, 324.00, 3, 'mountain', true, true, 202),
-	(084, 123.00, 4, 'mountain', false, false, 202),
-	(773, 757.00, 5, 'mountain', true, false, 202),
-	(832, 968.00, 6, 'mountain', false, false, 202),
---Barcelona
-	(275, 243.00, 2, 'sea', false, true, 203),
-	(173, 254.00, 3, 'mountain', false, true, 203),
-	(254, 345.00, 4, 'sea', true, false, 203),
-	(573, 623.00, 5, 'mountain', true, false, 203),
-	(305, 422.00, 6, 'sea', false, true, 203),
---Rome
-	(293, 325.00, 2, 'mountain', false, true, 204),
-	(352, 342.00, 3, 'sea', false, true, 204),
-	(545, 657.00, 4, 'mountain', false, true, 204),
-	(367, 354.00, 5, 'mountain', true, false, 204),
-	(073, 356.00, 6, 'sea', true, true, 204),
---Berlin
-	(323, 365.00, 2, 'mountain', true, true, 205),
-	(346, 457.00, 3, 'mountain', true, true, 205),
-	(452, 454.00, 4, 'mountain', false, false, 205),
-	(242, 243.00, 5, 'mountain', true, true, 205),
-	(373, 958.00, 6, 'mountain', false, true, 205),
---Vienna
-	(134, 246.00, 2, 'mountain', false, true, 206),
-	(036, 151.00, 3, 'mountain', false, true, 206),
-	(150, 243.00, 4, 'mountain', false, false, 206),
-	(158, 212.00, 5, 'mountain', true, false, 206),
-	(098, 846.00, 6, 'mountain', false, true, 206),
---St. Petersburg
-	(158, 153.00, 2, 'mountain', false, true, 207),
-	(014, 234.00, 3, 'mountain', false, true, 207),
-	(439, 542.00, 4, 'mountain', false, false, 207),
-	(007, 845.00, 5, 'mountain', true, false, 207),
-	(214, 536.00, 6, 'mountain', false, true, 207),
---Zurich
-	(095, 143.00, 2, 'mountain', false, false, 208),
-	(153, 155.00, 3, 'mountain', false, true, 208),
-	(892, 976.00, 4, 'mountain', true, false, 208),
-	(205, 354.00, 5, 'mountain', true, false, 208),
-	(231, 434.00, 6, 'mountain', false, true, 208),
---Madrid
-	(834, 963.00, 2, 'mountain', false, false, 209),
-	(425, 454.00, 3, 'mountain', false, true, 209),
-	(035, 354.00, 4, 'mountain', true, false, 209),
-	(042, 241.00, 5, 'mountain', true, false, 209),
-	(402, 452.00, 6, 'mountain', false, true, 209),
---Edinburgh
-	(391, 363.00, 2, 'mountain', false, false, 210),
-	(204, 226.00, 3, 'sea', false, true, 210),
-	(892, 774.99, 4, 'sea', true, false, 210),
-	(034, 362.00, 5, 'mountain', true, false, 210),
-	(157, 436.00, 6, 'sea', false, false, 210);
-	
-
 --------------------------------------------------------------
 -- -- inserting the hotels of the chain Pacific Hospitality
 INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
@@ -231,80 +117,6 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(3, 307, 5),
 	(3, 308, 5);
 
-Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) Values
---Tokyo
-	(100, 131.00, 2, 'sea', false, true, 301),
-	(302, 473.00, 3, 'sea', true, false, 301),
-	(383, 354.00, 4, 'sea', false, false, 301),
-	(087, 234.00, 5, 'sea', true, false, 301),
-	(294, 585.00, 6, 'sea', false, true, 301),
---Osaka
-	(314, 356.00, 2, 'sea', false, false, 302),
-	(505, 654.00, 3, 'sea', false, false, 302),
-	(439, 454.00, 4, 'sea', false, true, 302),
-	(313, 332.00, 5, 'sea', true, false, 302),
-	(662, 565.00, 6, 'sea', false, false, 302),
---Seoul
-	(889, 785.00, 2, 'sea', false, false, 303),
-	(937, 985.00, 3, 'sea', false, false, 303),
-	(439, 545.00, 4, 'sea', true, false, 303),
-	(249, 256.00, 5, 'sea', true, false, 303),
-	(938, 1796.00, 6, 'sea', false, true, 303),
---Singapore
-	(293, 235.00, 2, 'mountain', false, false, 304),
-	(352, 353.00, 3, 'sea', false, false, 304),
-	(532, 573.00, 4, 'mountain', false, true, 304),
-	(898, 956.00, 5, 'mountain', true, false, 304),
-	(073, 535.00, 6, 'sea', true, false, 304),
---Hong Kong
-	(323, 324.00, 2, 'mountain', true, false, 305),
-	(293, 362.00, 3, 'mountain', true, true, 305),
-	(995, 975.00, 4, 'mountain', false, false, 305),
-	(241, 265.00, 5, 'mountain', true, false, 305),
-	(742, 866.00, 6, 'mountain', false, false, 305),
---Bangkok
-	(745, 764.00, 2, 'sea', false, true, 306),
-	(754, 863.00, 3, 'sea', false, false, 306),
-	(266, 354.00, 4, 'sea', false, false, 306),
-	(235, 326.00, 5, 'sea', true, false, 306),
-	(964, 1364.00, 6, 'sea', false, false, 306),
---Hanoi
-	(724, 768.00, 2, 'sea', false, true, 307),
-	(643, 658.00, 3, 'mountain', false, true, 307),
-	(439, 485.00, 4, 'sea', false, false, 307),
-	(213, 215.00, 5, 'mountain', true, false, 307),
-	(232, 234.00, 6, 'sea', false, true, 307),
---Jakarta
-	(248, 234.00, 2, 'sea', false, false, 308),
-	(251, 255.00, 3, 'sea', false, false, 308),
-	(892, 985.00, 4, 'sea', true, false, 308),
-	(517, 564.00, 5, 'sea', true, false, 308),
-	(393, 454.00, 6, 'sea', false, false, 308),
---Manila
-	(248, 352.00, 2, 'sea', false, false, 309),
-	(251, 237.00, 3, 'sea', false, true, 309),
-	(892, 987.00, 4, 'sea', true, false, 309),
-	(517, 564.00, 5, 'sea', true, false, 309),
-	(393, 436.00, 6, 'sea', false, true, 309),
---Singapore
-	(248, 328.00, 2, 'sea', false, true, 310),
-	(251, 225.00, 3, 'sea', false, false, 310),
-	(892, 968.00, 4, 'sea', true, false, 310),
-	(517, 435.00, 5, 'sea', true, false, 310),
-	(393, 254.00, 6, 'sea', false, true, 310),
---Hong Kong	
-	(248, 345.00, 2, 'sea', false, false, 311),
-	(251, 325.00, 3, 'sea', false, false, 311),
-	(892, 978.00, 4, 'sea', true, false, 311),
-	(517, 673.00, 5, 'sea', true, false, 311),
-	(393, 342.00, 6, 'sea', false, true, 311),
---Tokyo
-	(248, 325.00, 2, 'sea', false, false, 312),
-	(251, 347.00, 3, 'sea', false, false, 312),
-	(892, 834.00, 4, 'sea', true, false, 312),
-	(517, 674.00, 5, 'sea', true, false, 312),
-	(393, 364.00, 6, 'sea', false, true, 312);
-
 
 --------------------------------------------------------------
 -- -- inserting the hotels of the chain Royal Accommodations
@@ -329,65 +141,8 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(4, 407, 5),
 	(4, 408, 2);
 
-Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) Values
---Paris
-	(100, 145.00, 2, 'sea', false, true, 401),
-	(302, 342.00, 3, 'sea', true, true, 401),
-	(383, 451.00, 4, 'sea', false, false, 401),
-	(087, 465.00, 5, 'sea', true, false, 401),
-	(294, 265.00, 6, 'sea', false, true, 401),
 
-	(314, 325.00, 2, 'sea', false, true, 402),
-	(505, 615.00, 3, 'sea', false, true, 402),
-	(439, 479.00, 4, 'sea', false, false, 402),
-	(313, 435.00, 5, 'sea', true, false, 402),
-	(662, 765.00, 6, 'sea', false, true, 402),
---Barcelona
-	(889, 935.00, 2, 'sea', false, true, 403),
-	(937, 1958.00, 3, 'sea', false, true, 403),
-	(439, 586.00, 4, 'sea', true, false, 403),
-	(249, 174.00, 5, 'sea', true, false, 403),
-	(938, 1043.00, 6, 'sea', false, true, 403),
---Rome
-	(293, 275.00, 2, 'mountain', false, true, 404),
-	(352, 356.00, 3, 'sea', false, true, 404),
-	(532, 626.00, 4, 'mountain', false, true, 404),
-	(898, 897.00, 5, 'mountain', true, false, 404),
-	(073, 246.00, 6, 'sea', true, true, 404),
---Berlin
-	(323, 631.00, 2, 'mountain', true, true, 405),
-	(293, 447.00, 3, 'mountain', true, true, 405),
-	(995, 396.00, 4, 'mountain', false, false, 405),
-	(241, 275.00, 5, 'mountain', true, false, 405),
-	(742, 963.00, 6, 'mountain', false, true, 405),
---Vienna
-	(745, 782.00, 2, 'sea', false, true, 406),
-	(754, 795.00, 3, 'sea', false, true, 406),
-	(266, 260.00, 4, 'sea', false, false, 406),
-	(235, 265.00, 5, 'sea', true, false, 406),
-	(964, 1975.00, 6, 'sea', false, true, 406),
---St. Petersburg
-	(724, 955.00, 2, 'sea', false, true, 407),
-	(643, 795.00, 3, 'mountain', false, true, 407),
-	(439, 235.00, 4, 'sea', false, false, 407),
-	(213, 332.00, 5, 'mountain', true, false, 407),
-	(232, 415.00, 6, 'sea', false, true, 407),
---Zurich
-	(248, 285.00, 2, 'sea', false, true, 408),
-	(251, 325.00, 3, 'sea', false, true, 408),
-	(892, 1645.00, 4, 'sea', true, false, 408),
-	(517, 595.00, 5, 'sea', true, false, 408),
-	(393, 450.00, 6, 'sea', false, true, 408),
---Madrid
-	(248, 215.00, 2, 'sea', false, true, 409),
-	(251, 314.00, 3, 'sea', false, true, 409),
-	(892, 1235.00, 4, 'sea', true, false, 409),
-	(517, 652.00, 5, 'sea', true, false, 409),
-	(393, 365.00, 6, 'sea', false, true, 409);
-
-
---------------------------------------------------------------
--- -- inserting the hotels of the chain Oasis Resorts International
+-- inserting the hotels of the chain Oasis Resorts International
 INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
     ('501', 135, '1 Sheikh Zayed Road', 'Dubai', 'UAE', '5'),
     ('502', 100, '2 Corniche', 'Abu Dhabi', 'UAE', '5'),
@@ -397,6 +152,7 @@ INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id
     ('506', 95, '6 Al Montazah', 'Alexandria', 'Egypt', '5'),
     ('507', 85, '7 Nile Corniche', 'Cairo', 'Egypt', '5'),
     ('508', 115, '8 Al Murjan', 'Manama', 'Bahrain', '5');
+
 --Owns 
 Insert into owns(chainID, hotelID, star_rating) values
 	(5, 501, 5),
@@ -408,67 +164,10 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(5, 507, 5),
 	(5, 508, 5);
 
-Insert INTO Room(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) Values
---Paris
-	(100, 320.00, 2, 'sea', false, true, 501),
-	(302, 580.00, 3, 'sea', true, true, 501),
-	(383, 790.00, 4, 'sea', false, false, 501),
-	(087, 210.00, 5, 'sea', true, false, 501),
-	(294, 100.00, 6, 'sea', false, true, 501),
-
-	(314, 362.00, 2, 'sea', false, true, 502),
-	(505, 590.00, 3, 'sea', false, true, 502),
-	(439, 580.00, 4, 'sea', false, false, 502),
-	(313, 485.00, 5, 'sea', true, false, 502),
-	(662, 755.00, 6, 'sea', false, true, 502),
---Barcelona
-	(889, 975.00, 2, 'sea', false, true, 503),
-	(937, 1465.00, 3, 'sea', false, true, 503),
-	(439, 355.00, 4, 'sea', true, false, 503),
-	(249, 260.00, 5, 'sea', true, false, 503),
-	(938, 1750.00, 6, 'sea', false, true, 503),
---Rome
-	(293, 120.00, 2, 'mountain', false, true, 504),
-	(352, 255.00, 3, 'sea', false, true, 504),
-	(532, 425.00, 4, 'mountain', false, true, 504),
-	(898, 859.99, 5, 'mountain', true, false, 504),
-	(073, 105.00, 6, 'sea', true, true, 504),
---Berlin
-	(323, 230.00, 2, 'mountain', true, true, 505),
-	(293, 275.00, 3, 'mountain', true, true, 505),
-	(995, 1200.00, 4, 'mountain', false, false, 505),
-	(241, 250.00, 5, 'mountain', true, false, 505),
-	(742, 875.00, 6, 'mountain', false, true, 505),
---Vienna
-	(745, 800.00, 2, 'sea', false, true, 506),
-	(754, 800.00, 3, 'sea', false, true, 506),
-	(266, 300.00, 4, 'sea', false, false, 506),
-	(235, 300.00, 5, 'sea', true, false, 506),
-	(964, 1750.00, 6, 'sea', false, true, 506),
---St. Petersburg
-	(724, 950.00, 2, 'sea', false, true, 507),
-	(643, 745.00, 3, 'mountain', false, true, 507),
-	(439, 300.00, 4, 'sea', false, false, 507),
-	(213, 275.00, 5, 'mountain', true, false, 507),
-	(232, 275.00, 6, 'sea', false, true, 507),
---Zurich
-	(248, 275.00, 2, 'sea', false, true, 508),
-	(251, 275.00, 3, 'sea', false, true, 508),
-	(892, 1370.00, 4, 'sea', true, false, 508),
-	(517, 400.00, 5, 'sea', true, false, 508),
-	(393, 375.00, 6, 'sea', false, true, 508);
-
-
-
---TODO if needed?
---Hotel Room Amenitites
-	--Insert INTO RoomAmenitie(roomNum, hotelID, Amenities) Values
-		--
-
 	 
 
 -- rooms for the Grand Hotels chain
-INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- new york 1
     (101, 299.99, 'single', 'city', TRUE, FALSE, 101),
     (102, 349.99, 'double', 'city', TRUE, FALSE, 101),
@@ -521,7 +220,7 @@ INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_da
     (301, 599.99, 'family', 'city', TRUE, FALSE, 108);
 
 -- rooms for the Prestige Hotels chain
-INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- paris 1
     (101, 359.99, 'single', 'city', TRUE, FALSE, 201),
     (102, 409.99, 'double', 'city', TRUE, FALSE, 201),
@@ -586,7 +285,7 @@ INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_da
     (302, 649.99, 'suite', 'city', TRUE, FALSE, 210);
 
 -- rooms for the Pacific Hospitality chain
-INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- tokyo 1
     (101, 349.99, 'single', 'city', TRUE, FALSE, 301),
     (102, 399.99, 'double', 'city', TRUE, FALSE, 301),
@@ -661,7 +360,7 @@ INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_da
     (301, 669.99, 'family', 'sea', TRUE, FALSE, 312);
 
 -- rooms for the Royal Accommodations chain
-INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- london 1
     (101, 379.99, 'single', 'city', TRUE, FALSE, 401),
     (102, 429.99, 'double', 'city', TRUE, FALSE, 401),
@@ -720,7 +419,7 @@ INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_da
     (302, 649.99, 'suite', 'sea', TRUE, FALSE, 409);
 
 -- rooms for the Oasis Resorts International chain
-INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- dubai 1
     (101, 429.99, 'single', 'city', TRUE, FALSE, 501),
     (102, 479.99, 'double', 'city', TRUE, FALSE, 501),
@@ -771,7 +470,7 @@ INSERT INTO Rooms (room_number, price, capacity, view_type, is_extendable, is_da
     (301, 609.99, 'family', 'city', TRUE, FALSE, 508);
 
 -- amenities for the Grand Hotels
-INSERT INTO RoomAmenities (hotelID, roomNum, amenities) VALUES
+INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     -- new york 1
     (101, 101, 'WiFi'), (101, 101, 'TV'), (101, 101, 'Air Conditioning'), (101, 101, 'Mini Fridge'),
     (101, 102, 'WiFi'), (101, 102, 'TV'), (101, 102, 'Air Conditioning'), (101, 102, 'Mini Bar'), (101, 102, 'Safe'),
@@ -824,7 +523,7 @@ INSERT INTO RoomAmenities (hotelID, roomNum, amenities) VALUES
     (108, 301, 'WiFi'), (108, 301, 'TV'), (108, 301, 'Air Conditioning'), (108, 301, 'Mini Bar'), (108, 301, 'Safe'), (108, 301, 'Kitchenette'), (108, 301, 'Sofa Bed');
 
 -- amenities for the Prestige Hotels
-INSERT INTO RoomAmenities (hotelID, roomNum, amenities) VALUES
+INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     -- paris 1
     (201, 101, 'WiFi'), (201, 101, 'TV'), (201, 101, 'Air Conditioning'), (201, 101, 'Mini Fridge'), (201, 101, 'Hairdryer'),
     (201, 102, 'WiFi'), (201, 102, 'TV'), (201, 102, 'Air Conditioning'), (201, 102, 'Mini Bar'), (201, 102, 'Safe'), (201, 102, 'Hairdryer'),
@@ -889,7 +588,7 @@ INSERT INTO RoomAmenities (hotelID, roomNum, amenities) VALUES
     (210, 302, 'WiFi'), (210, 302, 'TV'), (210, 302, 'Air Conditioning'), (210, 302, 'Mini Bar'), (210, 302, 'Safe'), (210, 302, 'Kitchenette'), (210, 302, 'Sofa Bed'), (210, 302, 'Hairdryer'), (210, 302, 'Bathrobe');
 
 -- amenities for the Pacific Hospitality hotels
-INSERT INTO RoomAmenities (hotelID, roomNum, amenities) VALUES
+INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     -- tokyo 1
     (301, 101, 'WiFi'), (301, 101, 'TV'), (301, 101, 'Air Conditioning'), (301, 101, 'Mini Fridge'), (301, 101, 'Yukata'), (301, 101, 'Slippers'),
     (301, 102, 'WiFi'), (301, 102, 'TV'), (301, 102, 'Air Conditioning'), (301, 102, 'Mini Bar'), (301, 102, 'Safe'), (301, 102, 'Yukata'), (301, 102, 'Slippers'),
@@ -964,7 +663,7 @@ INSERT INTO RoomAmenities (hotelID, roomNum, amenities) VALUES
     (312, 301, 'WiFi'), (312, 301, 'TV'), (312, 301, 'Air Conditioning'), (312, 301, 'Mini Bar'), (312, 301, 'Safe'), (312, 301, 'Kitchenette'), (312, 301, 'Sofa Bed'), (312, 301, 'Yukata'), (312, 301, 'Slippers'), (312, 301, 'Balcony'), (312, 301, 'Green Tea Set');
 
 -- amenities for the Royal Accommodation hotels
-INSERT INTO RoomAmenities (hotelID, roomNum, amenities) VALUES
+INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     -- london 1
     (401, 101, 'WiFi'), (401, 101, 'TV'), (401, 101, 'Air Conditioning'), (401, 101, 'Mini Fridge'), (401, 101, 'Tea/Coffee Maker'),
     (401, 102, 'WiFi'), (401, 102, 'TV'), (401, 102, 'Air Conditioning'), (401, 102, 'Mini Bar'), (401, 102, 'Safe'), (401, 102, 'Tea/Coffee Maker'),
@@ -1023,7 +722,7 @@ INSERT INTO RoomAmenities (hotelID, roomNum, amenities) VALUES
     (409, 302, 'WiFi'), (409, 302, 'TV'), (409, 302, 'Air Conditioning'), (409, 302, 'Mini Bar'), (409, 302, 'Safe'), (409, 302, 'Kitchenette'), (409, 302, 'Sofa Bed'), (409, 302, 'Tea/Coffee Maker'), (409, 302, 'Balcony');
 
 -- amenities for the Oasis Resorts International hotels
-INSERT INTO RoomAmenities (hotelID, roomNum, amenities) VALUES
+INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     -- dubai 1
     (501, 101, 'WiFi'), (501, 101, 'TV'), (501, 101, 'Air Conditioning'), (501, 101, 'Mini Fridge'),
     (501, 102, 'WiFi'), (501, 102, 'TV'), (501, 102, 'Air Conditioning'), (501, 102, 'Mini Bar'), (501, 102, 'Safe'),

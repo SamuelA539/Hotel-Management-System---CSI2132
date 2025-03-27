@@ -4,5 +4,4 @@ Schema created open to changes
 
 + hotel rooms
 TODO:
-    DB modifications(triggers): lab 9
     DB indexing: lab 10
