@@ -5,3 +5,4 @@ Schema created open to changes
 + hotel rooms
 TODO:
     DB indexing: lab 10
+    DB Views
