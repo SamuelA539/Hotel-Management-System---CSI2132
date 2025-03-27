@@ -134,7 +134,7 @@ address varchar(50) not null,
 ID_type varchar(25) not null,
 IDnumber numeric,
 registration_date date not null
---,Constraint validIDtype check (ID_type = '' or ID_type ='')
+Constraint validIDtype check (ID_type = 'Drivers Licence' or ID_type ='Passport')
 );
 
 

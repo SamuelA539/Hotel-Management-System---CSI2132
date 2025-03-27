@@ -11,7 +11,7 @@ INSERT INTO HotelChain (ChainID, Office_address, Num_of_hotels, Chain_name) VALU
     ('4', '101 Prestige Street, London, UK', 9, 'Royal Accommodations'),
     ('5', '7750 Desert Road, Dubai, UAE', 8, 'Oasis Resorts International');
 
--- -- inserting the hotel chain emails
+-- inserting the hotel chain emails
 INSERT INTO HotelChainEmail (hotelChainID, email) VALUES
     ('1', 'reservations@grandhotels.com'),
     ('1', 'info@grandhotels.com'),
@@ -24,7 +24,7 @@ INSERT INTO HotelChainEmail (hotelChainID, email) VALUES
     ('5', 'support@oasisint.com'),
     ('5', 'bookings@oasisint.com');
 
--- -- inserting the hotel chain phone numbers
+-- inserting the hotel chain phone numbers
 INSERT INTO HotelChainNumber (hotelChainID, phoneNum) VALUES
     ('1', '+1-435-342-3465'),
     ('1', '+1-801-335-2222'),
@@ -37,11 +37,7 @@ INSERT INTO HotelChainNumber (hotelChainID, phoneNum) VALUES
     ('5', '+971-532-533-3242'),
     ('5', '+971-893-534-7453');
 
-
-
 --------------------------------------------------------------
-
-
 -- -- inserting the hotels of the chain Grand Hotels
 INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
     ('101', 120, '1 Central Park West', 'New York', 'USA', '1'),
@@ -106,7 +102,8 @@ INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id
     ('310', 105, '140 Collyer Quay', 'Singapore', 'Singapore', '3'),
     ('311', 130, '1331 Victoria Peak', 'Hong Kong', 'China', '3'),
     ('312', 140, '1231 Akihabara', 'Tokyo', 'Japan', '3');
---Owns 
+
+--Owns
 Insert into owns(chainID, hotelID, star_rating) values
 	(3, 301, 5),
 	(3, 302, 3),
@@ -116,7 +113,6 @@ Insert into owns(chainID, hotelID, star_rating) values
 	(3, 306, 4),
 	(3, 307, 5),
 	(3, 308, 5);
-
 
 --------------------------------------------------------------
 -- -- inserting the hotels of the chain Royal Accommodations
@@ -973,3 +969,452 @@ INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_t
     (31203, 'Yuto', 'Sora', 'Ishikawa', '2-7 Shinjuku, Tokyo', 'ID Card', 34567897789, 312),
     (31204, 'Mio', 'Rin', 'Fujimoto', '6-4 Harajuku, Tokyo', 'Passport', 45678977890, 312),
     (31205, 'Haru', 'Taiki', 'Mori', '8-2 Roppongi, Tokyo', 'ID Card', 56789778901, 312);
+
+INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
+    -- london 1
+    (40101, 'James', 'William', 'Smith', '25 Kensington High St, London', 'Passport', 1234567890, 401),
+    (40102, 'Emily', 'Rose', 'Johnson', '14 Chelsea Bridge Rd, London', 'ID Card', 2345678901, 401),
+    (40103, 'Oliver', NULL, 'Williams', '8 Notting Hill Gate, London', 'Passport', 3456789012, 401),
+    (40104, 'Sophie', 'Elizabeth', 'Brown', '32 Mayfair, London', 'ID Card', 4567890123, 401),
+    (40105, 'Harry', 'Charles', 'Taylor', '17 Belgravia, London', 'Passport', 5678901234, 401),
+    -- edinburgh 1
+    (40201, 'Jack', 'Alexander', 'Wilson', '18 Royal Mile, Edinburgh', 'ID Card', 6789012345, 402),
+    (40202, 'Isla', 'Mae', 'Campbell', '9 Grassmarket, Edinburgh', 'Passport', 7890123456, 402),
+    (40203, 'Lewis', NULL, 'Stewart', '22 New Town, Edinburgh', 'ID Card', 8901234567, 402),
+    (40204, 'Olivia', 'Grace', 'MacDonald', '5 Stockbridge, Edinburgh', 'Passport', 9012345678, 402),
+    (40205, 'Logan', 'James', 'Murray', '13 Leith Walk, Edinburgh', 'ID Card', 0123456789, 402),
+    -- dublin 1
+    (40301, 'Sean', 'Patrick', 'O Sullivan', '15 Grafton St, Dublin', 'Passport', 1234509876, 403),
+    (40302, 'Aoife', 'Maire', 'Murphy', '8 Temple Bar, Dublin', 'ID Card', 2345610987, 403),
+    (40303, 'Connor', NULL, 'Kelly', '22 O Connell St, Dublin', 'Passport', 3456721098, 403),
+    (40304, 'Ciara', 'Sinead', 'Ryan', '4 Rathmines, Dublin', 'ID Card', 4567832109, 403),
+    (40305, 'Darragh', 'Thomas', 'Byrne', '11 Ballsbridge, Dublin', 'Passport', 5678943210, 403),
+    -- sydney
+    (40401, 'Liam', 'James', 'Wilson', '32 Circular Quay, Sydney', 'ID Card', 6789054321, 404),
+    (40402, 'Charlotte', 'Rose', 'Smith', '19 Darling Harbour, Sydney', 'Passport', 7890165432, 404),
+    (40403, 'Noah', NULL, 'Brown', '7 Bondi Beach, Sydney', 'ID Card', 8901276543, 404),
+    (40404, 'Ava', 'Grace', 'Taylor', '25 Manly, Sydney', 'Passport', 9012387654, 404),
+    (40405, 'William', 'Henry', 'Jones', '14 Parramatta, Sydney', 'ID Card', 0123498765, 404),
+    -- auckland
+    (40501, 'Lucas', 'John', 'Thompson', '18 Ponsonby Rd, Auckland', 'Passport', 1234567001, 405),
+    (40502, 'Mia', 'Anne', 'Harris', '9 Takapuna, Auckland', 'ID Card', 2345678002, 405),
+    (40503, 'Ethan', NULL, 'Martin', '22 Devonport, Auckland', 'Passport', 3456789003, 405),
+    (40504, 'Isabella', 'Jane', 'White', '5 Remuera, Auckland', 'ID Card', 4567890004, 405),
+    (40505, 'Jacob', 'Michael', 'Anderson', '13 Parnell, Auckland', 'Passport', 5678900005, 405),
+    -- dublin 2
+    (40601, 'Ryan', 'Patrick', 'Doyle', '17 St Stephen s Green, Dublin', 'ID Card', 1234567111, 406),
+    (40602, 'Niamh', 'Caitlin', 'Kennedy', '8 Camden St, Dublin', 'Passport', 2345678222, 406),
+    (40603, 'Adam', NULL, 'McCarthy', '24 Ranelagh, Dublin', 'ID Card', 3456789333, 406),
+    (40604, 'Sarah', 'Louise', 'Walsh', '3 Dun Laoghaire, Dublin', 'Passport', 4567890444, 406),
+    (40605, 'David', 'Paul', 'Power', '11 Blackrock, Dublin', 'ID Card', 5678900555, 406),
+    -- edinburgh 2
+    (40701, 'Callum', 'Andrew', 'Ross', '16 Stockbridge, Edinburgh', 'Passport', 1234567666, 407),
+    (40702, 'Eilidh', 'Marie', 'McKay', '7 Morningside, Edinburgh', 'ID Card', 2345678777, 407),
+    (40703, 'Finlay', NULL, 'Douglas', '23 Bruntsfield, Edinburgh', 'Passport', 3456789888, 407),
+    (40704, 'Freya', 'Anna', 'Sinclair', '9 Marchmont, Edinburgh', 'ID Card', 4567890999, 407),
+    (40705, 'Rory', 'John', 'Graham', '12 Corstorphine, Edinburgh', 'Passport', 5678900111, 407),
+    -- london 2
+    (40801, 'George', 'Edward', 'Evans', '28 Soho, London', 'ID Card', 1234567222, 408),
+    (40802, 'Amelia', 'Kate', 'Davies', '15 Covent Garden, London', 'Passport', 2345678333, 408),
+    (40803, 'Charlie', NULL, 'Roberts', '6 Shoreditch, London', 'ID Card', 3456789444, 408),
+    (40804, 'Jessica', 'Mary', 'Thomas', '21 Camden Town, London', 'Passport', 4567890555, 408),
+    (40805, 'Alfie', 'James', 'Hughes', '9 Islington, London', 'ID Card', 5678900666, 408),
+    -- melbourne
+    (40901, 'Thomas', 'Robert', 'Walker', '19 St Kilda Rd, Melbourne', 'Passport', 1234567888, 409),
+    (40902, 'Chloe', 'Elizabeth', 'King', '8 South Yarra, Melbourne', 'ID Card', 2345678999, 409),
+    (40903, 'Samuel', NULL, 'Baker', '25 Fitzroy, Melbourne', 'Passport', 3456789000, 409),
+    (40904, 'Zoe', 'Anne', 'Green', '11 Carlton, Melbourne', 'ID Card', 4567890111, 409),
+    (40905, 'Benjamin', 'John', 'Wright', '7 Brighton, Melbourne', 'Passport', 5678900222, 409);
+
+INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
+    -- dubai 1
+    (50101, 'Mohammed', 'Ali', 'Al-Maktoum', '15 Downtown Dubai', 'Emirates ID', 7841993001, 501),
+    (50102, 'Fatima', 'Yousuf', 'Al-Farsi', '22 Business Bay', 'Passport', 7841993002, 501),
+    (50103, 'Ahmed', NULL, 'Al-Hashimi', '8 Jumeirah Lakes', 'Emirates ID', 7841993003, 501),
+    (50104, 'Mariam', 'Khalid', 'Al-Nuaimi', '5 Dubai Marina', 'Passport', 7841993004, 501),
+    (50105, 'Omar', 'Ibrahim', 'Al-Shamsi', '11 Al Barsha', 'Emirates ID', 7841993005, 501),
+    -- abu dhabi
+    (50201, 'Khalid', 'Abdullah', 'Al-Nahyan', '18 Al Reem Island', 'Emirates ID', 7842994001, 502),
+    (50202, 'Aisha', 'Mohammed', 'Al-Qubaisi', '7 Khalifa City', 'Passport', 7842994002, 502),
+    (50203, 'Yousef', NULL, 'Al-Dhaheri', '24 Al Raha Beach', 'Emirates ID', 7842994003, 502),
+    (50204, 'Layla', 'Saeed', 'Al-Mansoori', '9 Al Maryah Island', 'Passport', 7842994004, 502),
+    (50205, 'Abdul', 'Rahman', 'Al-Suwaidi', '13 Al Zahiyah', 'Emirates ID', 7842994005, 502),
+    -- dubai 2
+    (50301, 'Hamad', 'Sultan', 'Al-Qasimi', '17 Palm Jumeirah', 'Emirates ID', 7843995001, 503),
+    (50302, 'Noor', 'Ahmed', 'Al-Zaabi', '6 Al Sufouh', 'Passport', 7843995002, 503),
+    (50303, 'Salem', NULL, 'Al-Ketbi', '21 Umm Suqeim', 'Emirates ID', 7843995003, 503),
+    (50304, 'Hessa', 'Khalifa', 'Al-Remeithi', '4 Al Quoz', 'Passport', 7843995004, 503),
+    (50305, 'Rashid', 'Mohammed', 'Al-Mehairi', '12 Al Wasl', 'Emirates ID', 7843995005, 503),
+    -- doha
+    (50401, 'Abdullah', 'Jassim', 'Al-Thani', '19 West Bay', 'Qatar ID', 6344006001, 504),
+    (50402, 'Noora', 'Mohammed', 'Al-Sulaiti', '8 The Pearl', 'Passport', 6344006002, 504),
+    (50403, 'Fahad', NULL, 'Al-Ansari', '25 Al Sadd', 'Qatar ID', 6344006003, 504),
+    (50404, 'Maha', 'Abdul', 'Al-Kuwari', '6 Al Waab', 'Passport', 6344006004, 504),
+    (50405, 'Khalifa', 'Ahmed', 'Al-Hajri', '14 Al Dafna', 'Qatar ID', 6344006005, 504),
+    -- riyadh
+    (50501, 'Saud', 'Faisal', 'Al-Saud', '16 Olaya District', 'Iqama', 7365007001, 505),
+    (50502, 'Amira', 'Khalid', 'Al-Ghamdi', '9 Diplomatic Quarter', 'Passport', 7365007002, 505),
+    (50503, 'Majid', NULL, 'Al-Shammari', '23 Al Nakheel', 'Iqama', 7365007003, 505),
+    (50504, 'Sara', 'Abdul', 'Al-Otaibi', '5 Al Malqa', 'Passport', 7365007004, 505),
+    (50505, 'Faisal', 'Nasser', 'Al-Zahrani', '11 Al Wurud', 'Iqama', 7365007005, 505),
+    -- alexandria
+    (50601, 'Mahmoud', 'Hassan', 'El-Sayed', '20 Montazah District', 'National ID', 2208008001, 506),
+    (50602, 'Amina', 'Mohamed', 'Abdel-Rahman', '10 Stanley Beach', 'Passport', 2208008002, 506),
+    (50603, 'Karim', NULL, 'Ibrahim', '27 Sidi Gaber', 'National ID', 2208008003, 506),
+    (50604, 'Yasmin', 'Ahmed', 'El-Masry', '8 Gleem', 'Passport', 2208008004, 506),
+    (50605, 'Tariq', 'Mahmoud', 'Hussein', '14 San Stefano', 'National ID', 2208008005, 506),
+    -- cairo
+    (50701, 'Ali', 'Osman', 'Mohammed', '18 Zamalek', 'National ID', 2209009001, 507),
+    (50702, 'Laila', 'Samir', 'El-Hadidy', '7 Garden City', 'Passport', 2209009002, 507),
+    (50703, 'Hassan', NULL, 'Farouk', '22 Maadi', 'National ID', 2209009003, 507),
+    (50704, 'Dalia', 'Karim', 'Shawky', '5 Dokki', 'Passport', 2209009004, 507),
+    (50705, 'Amir', 'Waleed', 'El-Shenawy', '11 Heliopolis', 'National ID', 2209009005, 507),
+    -- manama
+    (50801, 'Hussain', 'Abdul', 'Al-Khalifa', '17 Seef District', 'CPR', 1211010001, 508),
+    (50802, 'Mariam', 'Khalid', 'Al-Jalahma', '9 Amwaj Islands', 'Passport', 1211010002, 508),
+    (50803, 'Adel', NULL, 'Al-Mannai', '25 Juffair', 'CPR', 1211010003, 508),
+    (50804, 'Noura', 'Ahmed', 'Al-Hajri', '6 Riffa', 'Passport', 1211010004, 508),
+    (50805, 'Khalid', 'Mohammed', 'Al-Binali', '12 Budaiya', 'CPR', 1211010005, 508);
+
+-- employee roles for Grand Hotels
+INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+    -- new york 1
+    (10101, 'General Manager'), (10101, 'Operations Supervisor'),
+    (10102, 'Front Desk Manager'),
+    (10103, 'Concierge'), (10103, 'Bell Captain'),
+    (10104, 'Receptionist'),
+    (10105, 'Housekeeping Manager'),
+    (10106, 'Executive Chef'),
+    (10107, 'Maintenance Supervisor'),
+    (10108, 'Security Officer'),
+    -- new york 2
+    (10201, 'General Manager'),
+    (10202, 'Front Desk Supervisor'),
+    (10203, 'Concierge'),
+    (10204, 'Receptionist'), (10204, 'Night Auditor'),
+    (10205, 'Housekeeping Supervisor'),
+    (10206, 'Restaurant Manager'),
+    -- miami
+    (10301, 'General Manager'),
+    (10302, 'Front Desk Manager'),
+    (10303, 'Concierge'), (10303, 'Beach Attendant'),
+    (10304, 'Receptionist'),
+    (10305, 'Housekeeping Manager'),
+    (10306, 'Pool Supervisor'),
+    -- los angeles
+    (10401, 'General Manager'), (10401, 'Operations Manager'),
+    (10402, 'Front Desk Supervisor'),
+    (10403, 'Concierge'), (10403, 'Valet Supervisor'),
+    (10404, 'Receptionist'),
+    (10405, 'Housekeeping Supervisor'),
+    (10406, 'Spa Manager'),
+    (10407, 'Maintenance Technician'),
+    -- chicago
+    (10501, 'General Manager'),
+    (10502, 'Front Desk Manager'),
+    (10503, 'Concierge'),
+    (10504, 'Receptionist'), (10504, 'Reservations Agent'),
+    (10505, 'Housekeeping Manager'),
+    (10506, 'Banquet Manager'),
+    -- toronto
+    (10601, 'General Manager'),
+    (10602, 'Front Desk Supervisor'),
+    (10603, 'Concierge'), (10603, 'Ski Concierge'),
+    (10604, 'Receptionist'),
+    (10605, 'Housekeeping Supervisor'),
+    (10606, 'Event Coordinator'),
+    -- melbourne
+    (10701, 'General Manager'),
+    (10702, 'Front Desk Manager'),
+    (10703, 'Concierge'), (10703, 'Tour Coordinator'),
+    (10704, 'Receptionist'),
+    (10705, 'Housekeeping Manager'),
+    (10706, 'Restaurant Manager'),
+    -- singapore
+    (10801, 'General Manager'), (10801, 'Regional Manager'),
+    (10802, 'Front Desk Manager'),
+    (10803, 'Concierge'), (10803, 'Cultural Ambassador'),
+    (10804, 'Receptionist'), (10804, 'Multilingual Support'),
+    (10805, 'Housekeeping Manager'),
+    (10806, 'Spa Director'),
+    (10807, 'Security Supervisor'),
+    (10808, 'Executive Chef');
+
+-- employee roles for Prestige Hotels
+INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+    -- paris 1
+    (20101, 'General Manager'), (20101, 'Director of Operations'),
+    (20102, 'Front Office Manager'),
+    (20103, 'Chief Concierge'),
+    (20104, 'Receptionist'), (20104, 'Reservations Specialist'),
+    (20105, 'Executive Housekeeper'),
+    -- paris 2
+    (20201, 'General Manager'),
+    (20202, 'Guest Services Manager'),
+    (20203, 'Concierge'), (20203, 'VIP Services Coordinator'),
+    (20204, 'Night Manager'),
+    (20205, 'Housekeeping Supervisor'),
+    -- barcelona
+    (20301, 'General Manager'),
+    (20302, 'Front Desk Supervisor'),
+    (20303, 'Concierge'), (20303, 'Tourism Specialist'),
+    (20304, 'Receptionist'), (20304, 'Multilingual Host'),
+    (20305, 'Housekeeping Manager'),
+    -- rome
+    (20401, 'General Manager'),
+    (20402, 'Guest Relations Manager'),
+    (20403, 'Concierge'), (20403, 'Cultural Liaison'),
+    (20404, 'Receptionist'),
+    (20405, 'Housekeeping Supervisor'),
+    -- berlin
+    (20501, 'General Manager'),
+    (20502, 'Front Office Manager'),
+    (20503, 'Chief Concierge'),
+    (20504, 'Receptionist'), (20504, 'Business Center Attendant'),
+    (20505, 'Executive Housekeeper'),
+    -- vienna
+    (20601, 'General Manager'),
+    (20602, 'Guest Services Manager'),
+    (20603, 'Concierge'), (20603, 'Music Events Coordinator'),
+    (20604, 'Receptionist'),
+    (20605, 'Housekeeping Manager'),
+    -- st. petersburg
+    (20701, 'General Manager'),
+    (20702, 'Front Desk Manager'),
+    (20703, 'Concierge'), (20703, 'Cultural Ambassador'),
+    (20704, 'Receptionist'),
+    (20705, 'Housekeeping Supervisor'),
+    -- zurich
+    (20801, 'General Manager'),
+    (20802, 'Guest Relations Manager'),
+    (20803, 'Concierge'), (20803, 'Ski Concierge'),
+    (20804, 'Receptionist'), (20804, 'Multilingual Support'),
+    (20805, 'Executive Housekeeper'),
+    -- madrid
+    (20901, 'General Manager'),
+    (20902, 'Front Office Manager'),
+    (20903, 'Chief Concierge'),
+    (20904, 'Receptionist'),
+    (20905, 'Housekeeping Manager'),
+    -- edinburgh
+    (21001, 'General Manager'),
+    (21002, 'Guest Services Manager'),
+    (21003, 'Concierge'), (21003, 'Whisky Ambassador'),
+    (21004, 'Receptionist'),
+    (21005, 'Housekeeping Supervisor');
+
+-- employee roles for Pacific Hospitality
+INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+    -- tokyo 1
+    (30101, 'General Manager'), (30101, 'Omotenashi Director'),
+    (30102, 'Front Office Manager'),
+    (30103, 'Chief Concierge'), (30103, 'Cultural Ambassador'),
+    (30104, 'Receptionist'), (30104, 'Tea Ceremony Coordinator'),
+    (30105, 'Executive Housekeeper'),
+    -- osaka
+    (30201, 'General Manager'),
+    (30202, 'Guest Relations Manager'),
+    (30203, 'Concierge'), (30203, 'Food Culture Specialist'),
+    (30204, 'Receptionist'),
+    (30205, 'Housekeeping Manager'),
+    -- seoul
+    (30301, 'General Manager'),
+    (30302, 'Front Desk Manager'),
+    (30303, 'Concierge'), (30303, 'K-Pop Experience Coordinator'),
+    (30304, 'Receptionist'),
+    (30305, 'Housekeeping Supervisor'),
+    -- singapore 1
+    (30401, 'General Manager'),
+    (30402, 'Guest Services Manager'),
+    (30403, 'Chief Concierge'), (30403, 'Multicultural Liaison'),
+    (30404, 'Receptionist'),
+    (30405, 'Executive Housekeeper'),
+    -- hong kong 1
+    (30501, 'General Manager'),
+    (30502, 'Front Office Manager'),
+    (30503, 'Concierge'), (30503, 'Dim Sum Experience Host'),
+    (30504, 'Receptionist'),
+    (30505, 'Housekeeping Manager'),
+    -- bangkok
+    (30601, 'General Manager'),
+    (30602, 'Guest Relations Manager'),
+    (30603, 'Concierge'), (30603, 'Thai Cooking Instructor'),
+    (30604, 'Receptionist'),
+    (30605, 'Housekeeping Supervisor'),
+    -- hanoi
+    (30701, 'General Manager'),
+    (30702, 'Front Desk Manager'),
+    (30703, 'Concierge'), (30703, 'Heritage Tour Coordinator'),
+    (30704, 'Receptionist'),
+    (30705, 'Housekeeping Manager'),
+    -- jakarta
+    (30801, 'General Manager'),
+    (30802, 'Guest Services Manager'),
+    (30803, 'Concierge'), (30803, 'Batik Workshop Host'),
+    (30804, 'Receptionist'),
+    (30805, 'Housekeeping Supervisor'),
+    -- manila
+    (30901, 'General Manager'),
+    (30902, 'Front Office Manager'),
+    (30903, 'Chief Concierge'), (30903, 'Island Excursion Planner'),
+    (30904, 'Receptionist'),
+    (30905, 'Executive Housekeeper'),
+    -- singapore 2
+    (31001, 'General Manager'),
+    (31002, 'Guest Relations Manager'),
+    (31003, 'Concierge'), (31003, 'Garden City Guide'),
+    (31004, 'Receptionist'),
+    (31005, 'Housekeeping Manager'),
+    -- hong kong 2
+    (31101, 'General Manager'),
+    (31102, 'Front Desk Manager'),
+    (31103, 'Concierge'), (31103, 'Feng Shui Consultant'),
+    (31104, 'Receptionist'),
+    (31105, 'Housekeeping Supervisor'),
+    -- tokyo 2
+    (31201, 'General Manager'),
+    (31202, 'Guest Services Manager'),
+    (31203, 'Chief Concierge'), (31203, 'Anime Culture Expert'),
+    (31204, 'Receptionist'),
+    (31205, 'Executive Housekeeper');
+
+-- employee roles for Royal Accommodations
+INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+    -- london 1
+    (40101, 'General Manager'), (40101, 'Royal Service Director'),
+    (40102, 'Front Office Manager'),
+    (40103, 'Chief Concierge'), (40103, 'Royal Attaché'),
+    (40104, 'Receptionist'), (40104, 'Afternoon Tea Coordinator'),
+    (40105, 'Executive Housekeeper'),
+    -- edinburgh 1
+    (40201, 'General Manager'),
+    (40202, 'Guest Relations Manager'),
+    (40203, 'Concierge'), (40203, 'Whisky Ambassador'),
+    (40204, 'Receptionist'),
+    (40205, 'Housekeeping Manager'),
+    -- dublin 1
+    (40301, 'General Manager'),
+    (40302, 'Front Desk Manager'),
+    (40303, 'Concierge'), (40303, 'Cultural Heritage Guide'),
+    (40304, 'Receptionist'),
+    (40305, 'Housekeeping Supervisor'),
+    -- sydney
+    (40401, 'General Manager'),
+    (40402, 'Guest Services Manager'),
+    (40403, 'Chief Concierge'), (40403, 'Beach Experience Coordinator'),
+    (40404, 'Receptionist'),
+    (40405, 'Executive Housekeeper'),
+    -- auckland
+    (40501, 'General Manager'),
+    (40502, 'Front Office Manager'),
+    (40503, 'Concierge'), (40503, 'Maori Culture Specialist'),
+    (40504, 'Receptionist'),
+    (40505, 'Housekeeping Manager'),
+    -- dublin 2
+    (40601, 'General Manager'),
+    (40602, 'Guest Relations Manager'),
+    (40603, 'Concierge'), (40603, 'Literary Pub Tour Guide'),
+    (40604, 'Receptionist'),
+    (40605, 'Housekeeping Supervisor'),
+    -- edinburgh 2
+    (40701, 'General Manager'),
+    (40702, 'Front Desk Manager'),
+    (40703, 'Concierge'), (40703, 'Castle Tour Specialist'),
+    (40704, 'Receptionist'),
+    (40705, 'Housekeeping Manager'),
+    -- london 2
+    (40801, 'General Manager'),
+    (40802, 'Guest Services Manager'),
+    (40803, 'Chief Concierge'), (40803, 'Theatre Booking Expert'),
+    (40804, 'Receptionist'),
+    (40805, 'Executive Housekeeper'),
+    -- melbourne
+    (40901, 'General Manager'),
+    (40902, 'Front Office Manager'),
+    (40903, 'Concierge'), (40903, 'Wine Country Guide'),
+    (40904, 'Receptionist'),
+    (40905, 'Housekeeping Manager');
+
+-- employee roles for Desert Oasis Resorts
+INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+    -- dubai 1
+    (50101, 'General Manager'), (50101, 'Luxury Services Director'),
+    (50102, 'Guest Relations Manager'),
+    (50103, 'Chief Concierge'), (50103, 'Desert Experience Guide'),
+    (50104, 'Receptionist'), (50104, 'Arabic Hospitality Specialist'),
+    (50105, 'Executive Housekeeper'),
+    -- abu dhabi
+    (50201, 'General Manager'),
+    (50202, 'Front Office Manager'),
+    (50203, 'Concierge'), (50203, 'Cultural Heritage Expert'),
+    (50204, 'Receptionist'),
+    (50205, 'Housekeeping Manager'),
+    -- dubai 2
+    (50301, 'General Manager'),
+    (50302, 'Guest Services Manager'),
+    (50303, 'Concierge'), (50303, 'Yacht Charter Coordinator'),
+    (50304, 'Receptionist'),
+    (50305, 'Housekeeping Supervisor'),
+    -- doha
+    (50401, 'General Manager'),
+    (50402, 'Front Desk Manager'),
+    (50403, 'Concierge'), (50403, 'Pearl Diving Experience Host'),
+    (50404, 'Receptionist'),
+    (50405, 'Housekeeping Manager'),
+    -- riyadh
+    (50501, 'General Manager'),
+    (50502, 'Guest Relations Manager'),
+    (50503, 'Concierge'), (50503, 'Traditional Coffee Ceremony Host'),
+    (50504, 'Receptionist'),
+    (50505, 'Housekeeping Supervisor'),
+    -- alexandria
+    (50601, 'General Manager'),
+    (50602, 'Front Office Manager'),
+    (50603, 'Concierge'), (50603, 'Mediterranean Cruise Coordinator'),
+    (50604, 'Receptionist'),
+    (50605, 'Housekeeping Manager'),
+    -- cairo
+    (50701, 'General Manager'),
+    (50702, 'Guest Services Manager'),
+    (50703, 'Chief Concierge'), (50703, 'Pyramids Tour Specialist'),
+    (50704, 'Receptionist'),
+    (50705, 'Executive Housekeeper'),
+    -- manama
+    (50801, 'General Manager'),
+    (50802, 'Front Desk Manager'),
+    (50803, 'Concierge'), (50803, 'Pearl Diving Heritage Guide'),
+    (50804, 'Receptionist'),
+    (50805, 'Housekeeping Manager');
+
+-- generic customers for examples
+INSERT INTO Customer (firstName, middleName, lastName, address, ID_type, IDnumber, registration_date) VALUES
+    ('James', 'Robert', 'Wilson', '123 Main St, New York, NY', 'Passport', 123456789, '2025-01-15'),
+    ('Sarah', 'Elizabeth', 'Johnson', '456 Oak Ave, Boston, MA', 'Passport', 987654321, '2025-02-20'),
+    ('Michael', NULL, 'Brown', '789 Pine Rd, Chicago, IL', 'Passport', 456123789, '2025-03-10'),
+    ('Emily', 'Anne', 'Davis', '321 Elm St, Los Angeles, CA', 'Passport', 789456123, '2025-01-25'),
+    ('David', 'William', 'Miller', '654 Maple Dr, Miami, FL', 'Passport', 321654987, '2025-04-05'),
+    ('Jennifer', NULL, 'Taylor', '159 Cedar Ln, Seattle, WA', 'Passport', 654987321, '2025-02-15'),
+    ('Robert', 'John', 'Anderson', '753 Birch Blvd, Dallas, TX', 'Passport', 987321654, '2025-05-12'),
+    ('Jessica', 'Marie', 'Thomas', '852 Spruce Way, Denver, CO', 'Passport', 147258369, '2025-03-22'),
+    ('Christopher', 'Alan', 'Jackson', '369 Willow Cir, Atlanta, GA', 'Passport', 369258147, '2025-04-18'),
+    ('Amanda', 'Louise', 'White', '258 Redwood Ave, San Francisco, CA', 'Passport', 258369147, '2025-01-30'),
+    ('Daniel', 'Joseph', 'Harris', '147 Palm St, Phoenix, AZ', 'Drivers Licence', 159753468, '2025-02-28'),
+    ('Nicole', NULL, 'Martin', '753 Juniper Rd, Las Vegas, NV', 'Drivers Licence', 357159486, '2025-05-01'),
+    ('Matthew', 'Thomas', 'Thompson', '951 Magnolia Dr, Orlando, FL', 'Drivers Licence', 753159486, '2025-03-15'),
+    ('Elizabeth', 'Grace', 'Garcia', '852 Dogwood Ln, San Diego, CA', 'Drivers Licence', 951753468, '2025-04-22'),
+    ('William', 'Charles', 'Martinez', '456 Sequoia Way, Houston, TX', 'Drivers Licence', 852963741, '2025-01-10'),
+    ('Ashley', 'Nicole', 'Robinson', '963 Sycamore Ave, Philadelphia, PA', 'Drivers Licence', 741852963, '2025-02-05'),
+    ('Joseph', NULL, 'Clark', '159 Aspen Blvd, Washington, DC', 'Drivers Licence', 963852741, '2025-05-20'),
+    ('Megan', 'Elizabeth', 'Rodriguez', '357 Cottonwood Cir, San Antonio, TX', 'Drivers Licence', 159357486, '2025-03-30'),
+    ('Andrew', 'David', 'Lewis', '753 Redbud Rd, Nashville, TN', 'Drivers Licence', 357486159, '2025-04-10'),
+    ('Stephanie', NULL, 'Lee', '456 Hawthorn Ln, Portland, OR', 'Drivers Licence', 486159357, '2025-01-18'),
+    ('Jean', 'Pierre', 'Dupont', '45 Rue de la Paix, Paris, France', 'Passport', 123789456, '2025-02-12'),
+    ('Maria', 'Giulia', 'Bianchi', '8 Via Condotti, Rome, Italy', 'Passport', 456789123, '2025-03-25'),
+    ('Hans', NULL, 'Schmidt', '45 Unter den Linden, Berlin, Germany', 'Passport', 789123456, '2025-04-15'),
+    ('Carlos', NULL, 'Garcia', '56 Passeig de Gràcia, Barcelona, Spain', 'Passport', 321987654, '2025-05-05'),
+    ('Haruto', NULL, 'Tanaka', '5-12 Shibuya, Tokyo, Japan', 'Passport', 654987321, '2025-01-22'),
+    ('Min-jun', NULL, 'Kim', '45-2 Myeongdong, Seoul, South Korea', 'Passport', 987321654, '2025-02-28'),
+    ('Wei', 'Jie', 'Tan', '15 Orchard Road, Singapore', 'Passport', 147369258, '2025-03-18'),
+    ('Chi', 'Hang', 'Chan', '33 Nathan Road, Hong Kong', 'Passport', 369258147, '2025-04-30'),
+    ('Mohammed', 'Ali', 'Al-Maktoum', '15 Downtown Dubai, UAE', 'Passport', 258147369, '2025-05-15'),
+    ('James', 'Alexander', 'MacDonald', '15 Princes Street, Edinburgh, UK', 'Passport', 852741963, '2025-01-05');
