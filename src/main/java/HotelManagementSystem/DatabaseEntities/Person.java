@@ -1,4 +1,4 @@
-package HotelManagementSystem.Users;
+package HotelManagementSystem.DatabaseEntities;
 
 public class Person {
     private String firstName;

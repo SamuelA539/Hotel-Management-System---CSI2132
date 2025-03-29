@@ -1,4 +1,4 @@
-package HotelManagementSystem.DatabaseEntities.HotelObjects;
+package HotelManagementSystem.DatabaseEntities;
 
 public class Hotel {
 
@@ -16,7 +16,7 @@ public class Hotel {
     //private int HotelChain
 
     /*Constructors*/
-    public Hotel(int hotelID, String country, String city, String streetAddress, int numRooms) {
+    public Hotel(int hotelID, String streetAddress, String city, String country, int numRooms) {
         this.hotelID = hotelID;
         this.country = country;
         this.city = city;

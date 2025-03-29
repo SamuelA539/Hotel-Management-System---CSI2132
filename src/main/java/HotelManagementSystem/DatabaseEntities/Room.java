@@ -1,4 +1,4 @@
-package HotelManagementSystem.DatabaseEntities.HotelObjects;
+package HotelManagementSystem.DatabaseEntities;
 
 public class Room {
 

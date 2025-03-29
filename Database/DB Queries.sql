@@ -9,9 +9,7 @@ select address --city
 select * from hotel natural join room where room.hotel_ID = hotel.hotelid;
 
 --returns hotel rooms under 500
-select address,
-	--addressline1, city, country, 
-	room_number, price, capacity from hotel 
+select addressline1, city, country, room_number, price, capacity from hotel
 	natural join room where 
 		room.price <500 and 
 		room.hotel_ID = hotel.hotelid;

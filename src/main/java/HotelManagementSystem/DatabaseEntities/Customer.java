@@ -1,4 +1,4 @@
-package HotelManagementSystem.Users;
+package HotelManagementSystem.DatabaseEntities;
 
 //todo:
 //  return person?||person attributes through class?

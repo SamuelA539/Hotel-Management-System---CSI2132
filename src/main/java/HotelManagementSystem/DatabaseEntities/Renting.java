@@ -1,8 +1,4 @@
-package HotelManagementSystem.Events;
-
-import HotelManagementSystem.DatabaseEntities.HotelObjects.Room;
-import HotelManagementSystem.Users.Customer;
-import HotelManagementSystem.Users.Employee;
+package HotelManagementSystem.DatabaseEntities;
 
 public class Renting {
 

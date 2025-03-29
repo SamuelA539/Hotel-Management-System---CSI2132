@@ -6,5 +6,15 @@ Schema created open to changes
 TODO:
     DB indexing: lab 10
     DB Views
+
     DB connection
     toString
+
+Room Search Criteria
+    the dates (start, end) of booking or renting,
+    the room capacity,
+    the area,
+    the hotel chain,
+    the category of the hotel,
+    the total number of rooms in the hotel,
+    the price of the rooms

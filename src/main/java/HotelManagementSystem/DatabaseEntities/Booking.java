@@ -1,6 +1,4 @@
-package HotelManagementSystem.Events;
-
-import HotelManagementSystem.Users.Customer;
+package HotelManagementSystem.DatabaseEntities;
 
 import java.util.Date;
 
