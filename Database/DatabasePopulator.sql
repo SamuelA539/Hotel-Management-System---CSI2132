@@ -4,7 +4,7 @@ SET search_path = project;
 
 
 -- inserting the require 5 hotel chains
-INSERT INTO HotelChain (ChainID, Office_address, Num_of_hotels, Chain_name) VALUES
+INSERT INTO hotel_chain (ChainID, Office_address, Num_of_hotels, Chain_name) VALUES
     ('1', '55 Global Ave, New York, USA', 8, 'Grand Hotels'),
     ('2', '456 Luxury Lane, Paris, France', 10, 'Prestige Hotels'),
     ('3', '72 Resort Blvd, Manila, Philippines', 12, 'Pacific Hospitality'),
@@ -12,7 +12,7 @@ INSERT INTO HotelChain (ChainID, Office_address, Num_of_hotels, Chain_name) VALU
     ('5', '7750 Desert Road, Dubai, UAE', 8, 'Oasis Resorts International');
 
 -- inserting the hotel chain emails
-INSERT INTO HotelChainEmail (hotelChainID, email) VALUES
+INSERT INTO hotel_chain_email (hotelChainID, email) VALUES
     ('1', 'reservations@grandhotels.com'),
     ('1', 'info@grandhotels.com'),
     ('2', 'bookings@prestigehotels.com'),
@@ -25,7 +25,7 @@ INSERT INTO HotelChainEmail (hotelChainID, email) VALUES
     ('5', 'bookings@oasisint.com');
 
 -- inserting the hotel chain phone numbers
-INSERT INTO HotelChainNumber (hotelChainID, phoneNum) VALUES
+INSERT INTO hotel_chain_number (hotelChainID, phoneNum) VALUES
     ('1', '+1-435-342-3465'),
     ('1', '+1-801-335-2222'),
     ('2', '+33-122-333-4444'),
@@ -39,7 +39,7 @@ INSERT INTO HotelChainNumber (hotelChainID, phoneNum) VALUES
 
 --------------------------------------------------------------
 -- -- inserting the hotels of the chain Grand Hotels
-INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
+INSERT INTO hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
     ('101', 120, '1 Central Park West', 'New York', 'USA', '1'),
     ('102', 90, '275 Central Park West', 'New York', 'USA', '1'),
     ('103', 80, '1674 Ocean Drive', 'Miami', 'USA', '1'),
@@ -63,7 +63,7 @@ Insert into owns(chainID, hotelID, star_rating) values
 
 --------------------------------------------------------------
 -- -- inserting the hotels of the chain Prestige Hotels
-INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
+INSERT INTO hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
     ('201', 130, '123 Champs-Élysées', 'Paris', 'France', '2'),
     ('202', 95, '2325 Rue de Rivoli', 'Paris', 'France', '2'),
     ('203', 85, '34 La Rambla', 'Barcelona', 'Spain', '2'),
@@ -89,7 +89,7 @@ Insert into owns(chainID, hotelID, star_rating) values
 
 --------------------------------------------------------------
 -- -- inserting the hotels of the chain Pacific Hospitality
-INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
+INSERT INTO hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
     ('301', 140, '12 Ginza', 'Tokyo', 'Japan', '3'),
     ('302', 100, '312 Namba', 'Osaka', 'Japan', '3'),
     ('303', 90, '3325 Myeongdong', 'Seoul', 'South Korea', '3'),
@@ -116,7 +116,7 @@ Insert into owns(chainID, hotelID, star_rating) values
 
 --------------------------------------------------------------
 -- -- inserting the hotels of the chain Royal Accommodations
-INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
+INSERT INTO hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
     ('401', 125, '1 Park Lane', 'London', 'UK', '4'),
     ('402', 95, '222 Princes Street', 'Edinburgh', 'UK', '4'),
     ('403', 85, '331 Temple Bar', 'Dublin', 'Ireland', '4'),
@@ -139,7 +139,7 @@ Insert into owns(chainID, hotelID, star_rating) values
 
 
 -- inserting the hotels of the chain Oasis Resorts International
-INSERT INTO Hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
+INSERT INTO hotel (hotelID, numRooms, addressLine1, city, country, hotelChain_id) VALUES
     ('501', 135, '1 Sheikh Zayed Road', 'Dubai', 'UAE', '5'),
     ('502', 100, '2 Corniche', 'Abu Dhabi', 'UAE', '5'),
     ('503', 90, '3 Jumeirah Beach', 'Dubai', 'UAE', '5'),
@@ -163,7 +163,7 @@ Insert into owns(chainID, hotelID, star_rating) values
 	 
 
 -- rooms for the Grand Hotels chain
-INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- new york 1
     (101, 299.99, 'single', 'city', TRUE, FALSE, 101),
     (102, 349.99, 'double', 'city', TRUE, FALSE, 101),
@@ -216,7 +216,7 @@ INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_dam
     (301, 599.99, 'family', 'city', TRUE, FALSE, 108);
 
 -- rooms for the Prestige Hotels chain
-INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- paris 1
     (101, 359.99, 'single', 'city', TRUE, FALSE, 201),
     (102, 409.99, 'double', 'city', TRUE, FALSE, 201),
@@ -281,7 +281,7 @@ INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_dam
     (302, 649.99, 'suite', 'city', TRUE, FALSE, 210);
 
 -- rooms for the Pacific Hospitality chain
-INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- tokyo 1
     (101, 349.99, 'single', 'city', TRUE, FALSE, 301),
     (102, 399.99, 'double', 'city', TRUE, FALSE, 301),
@@ -356,7 +356,7 @@ INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_dam
     (301, 669.99, 'family', 'sea', TRUE, FALSE, 312);
 
 -- rooms for the Royal Accommodations chain
-INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- london 1
     (101, 379.99, 'single', 'city', TRUE, FALSE, 401),
     (102, 429.99, 'double', 'city', TRUE, FALSE, 401),
@@ -415,7 +415,7 @@ INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_dam
     (302, 649.99, 'suite', 'sea', TRUE, FALSE, 409);
 
 -- rooms for the Oasis Resorts International chain
-INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
+INSERT INTO room (room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) VALUES
     -- dubai 1
     (101, 429.99, 'single', 'city', TRUE, FALSE, 501),
     (102, 479.99, 'double', 'city', TRUE, FALSE, 501),
@@ -466,7 +466,7 @@ INSERT INTO Room (room_number, price, capacity, view_type, is_extendable, is_dam
     (301, 609.99, 'family', 'city', TRUE, FALSE, 508);
 
 -- amenities for the Grand Hotels
-INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
+INSERT INTO room_amenities (hotelID, roomNum, amenities) VALUES
     -- new york 1
     (101, 101, 'WiFi'), (101, 101, 'TV'), (101, 101, 'Air Conditioning'), (101, 101, 'Mini Fridge'),
     (101, 102, 'WiFi'), (101, 102, 'TV'), (101, 102, 'Air Conditioning'), (101, 102, 'Mini Bar'), (101, 102, 'Safe'),
@@ -519,7 +519,7 @@ INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     (108, 301, 'WiFi'), (108, 301, 'TV'), (108, 301, 'Air Conditioning'), (108, 301, 'Mini Bar'), (108, 301, 'Safe'), (108, 301, 'Kitchenette'), (108, 301, 'Sofa Bed');
 
 -- amenities for the Prestige Hotels
-INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
+INSERT INTO room_amenities (hotelID, roomNum, amenities) VALUES
     -- paris 1
     (201, 101, 'WiFi'), (201, 101, 'TV'), (201, 101, 'Air Conditioning'), (201, 101, 'Mini Fridge'), (201, 101, 'Hairdryer'),
     (201, 102, 'WiFi'), (201, 102, 'TV'), (201, 102, 'Air Conditioning'), (201, 102, 'Mini Bar'), (201, 102, 'Safe'), (201, 102, 'Hairdryer'),
@@ -584,7 +584,7 @@ INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     (210, 302, 'WiFi'), (210, 302, 'TV'), (210, 302, 'Air Conditioning'), (210, 302, 'Mini Bar'), (210, 302, 'Safe'), (210, 302, 'Kitchenette'), (210, 302, 'Sofa Bed'), (210, 302, 'Hairdryer'), (210, 302, 'Bathrobe');
 
 -- amenities for the Pacific Hospitality hotels
-INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
+INSERT INTO room_amenities (hotelID, roomNum, amenities) VALUES
     -- tokyo 1
     (301, 101, 'WiFi'), (301, 101, 'TV'), (301, 101, 'Air Conditioning'), (301, 101, 'Mini Fridge'), (301, 101, 'Yukata'), (301, 101, 'Slippers'),
     (301, 102, 'WiFi'), (301, 102, 'TV'), (301, 102, 'Air Conditioning'), (301, 102, 'Mini Bar'), (301, 102, 'Safe'), (301, 102, 'Yukata'), (301, 102, 'Slippers'),
@@ -659,7 +659,7 @@ INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     (312, 301, 'WiFi'), (312, 301, 'TV'), (312, 301, 'Air Conditioning'), (312, 301, 'Mini Bar'), (312, 301, 'Safe'), (312, 301, 'Kitchenette'), (312, 301, 'Sofa Bed'), (312, 301, 'Yukata'), (312, 301, 'Slippers'), (312, 301, 'Balcony'), (312, 301, 'Green Tea Set');
 
 -- amenities for the Royal Accommodation hotels
-INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
+INSERT INTO room_amenities (hotelID, roomNum, amenities) VALUES
     -- london 1
     (401, 101, 'WiFi'), (401, 101, 'TV'), (401, 101, 'Air Conditioning'), (401, 101, 'Mini Fridge'), (401, 101, 'Tea/Coffee Maker'),
     (401, 102, 'WiFi'), (401, 102, 'TV'), (401, 102, 'Air Conditioning'), (401, 102, 'Mini Bar'), (401, 102, 'Safe'), (401, 102, 'Tea/Coffee Maker'),
@@ -718,7 +718,7 @@ INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     (409, 302, 'WiFi'), (409, 302, 'TV'), (409, 302, 'Air Conditioning'), (409, 302, 'Mini Bar'), (409, 302, 'Safe'), (409, 302, 'Kitchenette'), (409, 302, 'Sofa Bed'), (409, 302, 'Tea/Coffee Maker'), (409, 302, 'Balcony');
 
 -- amenities for the Oasis Resorts International hotels
-INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
+INSERT INTO room_amenities (hotelID, roomNum, amenities) VALUES
     -- dubai 1
     (501, 101, 'WiFi'), (501, 101, 'TV'), (501, 101, 'Air Conditioning'), (501, 101, 'Mini Fridge'),
     (501, 102, 'WiFi'), (501, 102, 'TV'), (501, 102, 'Air Conditioning'), (501, 102, 'Mini Bar'), (501, 102, 'Safe'),
@@ -769,7 +769,7 @@ INSERT INTO RoomAmenitie (hotelID, roomNum, amenities) VALUES
     (508, 301, 'WiFi'), (508, 301, 'TV'), (508, 301, 'Air Conditioning'), (508, 301, 'Mini Bar'), (508, 301, 'Safe'), (508, 301, 'Kitchenette'), (508, 301, 'Sofa Bed');
 
 -- employees for Grand Hotels
-INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
+INSERT INTO employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
     -- new york 1
     (10101, 'James', 'Robert', 'Wilson', '123 W 45th St, New York, NY 10036', 'passport', 123456789, 101),
     (10102, 'Sarah', 'Elizabeth', 'Johnson', '456 Broadway, New York, NY 10013', 'driver license', 987654321, 101),
@@ -833,7 +833,7 @@ INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_t
     (10808, 'Haley', 'Elizabeth', 'Morgan', '852 Beach Rd, Singapore 189677', 'driver license', 34567890123456, 108);
 
 -- employees for Prestige Hotels
-INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
+INSERT INTO employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
     -- paris 1
     (20101, 'Jean', 'Pierre', 'Dupont', '45 Rue de la Paix, Paris', 'Passport', 123456789, 201),
     (20102, 'Marie', 'Claire', 'Lefevre', '12 Avenue Montaigne, Paris', 'ID Card', 987654321, 201),
@@ -896,7 +896,7 @@ INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_t
     (21005, 'Andrew', 'Charles', 'Stewart', '5 Castlehill, Edinburgh', 'ID Card', 789654321, 210);
 
 -- employees for Pacific Hospitality
-INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
+INSERT INTO employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
     -- tokyo 1
     (30101, 'Haruto', NULL, 'Tanaka', '5-12 Shibuya, Tokyo', 'Passport', 12345678901, 301),
     (30102, 'Sakura', 'Hana', 'Sato', '3-9 Shinjuku, Tokyo', 'ID Card', 23456789012, 301),
@@ -970,7 +970,7 @@ INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_t
     (31204, 'Mio', 'Rin', 'Fujimoto', '6-4 Harajuku, Tokyo', 'Passport', 45678977890, 312),
     (31205, 'Haru', 'Taiki', 'Mori', '8-2 Roppongi, Tokyo', 'ID Card', 56789778901, 312);
 
-INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
+INSERT INTO employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
     -- london 1
     (40101, 'James', 'William', 'Smith', '25 Kensington High St, London', 'Passport', 1234567890, 401),
     (40102, 'Emily', 'Rose', 'Johnson', '14 Chelsea Bridge Rd, London', 'ID Card', 2345678901, 401),
@@ -1026,7 +1026,7 @@ INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_t
     (40904, 'Zoe', 'Anne', 'Green', '11 Carlton, Melbourne', 'ID Card', 4567890111, 409),
     (40905, 'Benjamin', 'John', 'Wright', '7 Brighton, Melbourne', 'Passport', 5678900222, 409);
 
-INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
+INSERT INTO employee (EmployeeID, firstName, middleName, lastName, address, ID_type, personalID, hotel_id) VALUES
     -- dubai 1
     (50101, 'Mohammed', 'Ali', 'Al-Maktoum', '15 Downtown Dubai', 'Emirates ID', 7841993001, 501),
     (50102, 'Fatima', 'Yousuf', 'Al-Farsi', '22 Business Bay', 'Passport', 7841993002, 501),
@@ -1077,7 +1077,7 @@ INSERT INTO Employee (EmployeeID, firstName, middleName, lastName, address, ID_t
     (50805, 'Khalid', 'Mohammed', 'Al-Binali', '12 Budaiya', 'CPR', 1211010005, 508);
 
 -- employee roles for Grand Hotels
-INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+INSERT INTO employee_role (EmployeeID, role) VALUES
     -- new york 1
     (10101, 'General Manager'), (10101, 'Operations Supervisor'),
     (10102, 'Front Desk Manager'),
@@ -1141,7 +1141,7 @@ INSERT INTO EmployeeRole (EmployeeID, role) VALUES
     (10808, 'Executive Chef');
 
 -- employee roles for Prestige Hotels
-INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+INSERT INTO employee_role (EmployeeID, role) VALUES
     -- paris 1
     (20101, 'General Manager'), (20101, 'Director of Operations'),
     (20102, 'Front Office Manager'),
@@ -1204,7 +1204,7 @@ INSERT INTO EmployeeRole (EmployeeID, role) VALUES
     (21005, 'Housekeeping Supervisor');
 
 -- employee roles for Pacific Hospitality
-INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+INSERT INTO employee_role (EmployeeID, role) VALUES
     -- tokyo 1
     (30101, 'General Manager'), (30101, 'Omotenashi Director'),
     (30102, 'Front Office Manager'),
@@ -1279,7 +1279,7 @@ INSERT INTO EmployeeRole (EmployeeID, role) VALUES
     (31205, 'Executive Housekeeper');
 
 -- employee roles for Royal Accommodations
-INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+INSERT INTO employee_role (EmployeeID, role) VALUES
     -- london 1
     (40101, 'General Manager'), (40101, 'Royal Service Director'),
     (40102, 'Front Office Manager'),
@@ -1336,7 +1336,7 @@ INSERT INTO EmployeeRole (EmployeeID, role) VALUES
     (40905, 'Housekeeping Manager');
 
 -- employee roles for Desert Oasis Resorts
-INSERT INTO EmployeeRole (EmployeeID, role) VALUES
+INSERT INTO employee_role (EmployeeID, role) VALUES
     -- dubai 1
     (50101, 'General Manager'), (50101, 'Luxury Services Director'),
     (50102, 'Guest Relations Manager'),
@@ -1387,7 +1387,7 @@ INSERT INTO EmployeeRole (EmployeeID, role) VALUES
     (50805, 'Housekeeping Manager');
 
 -- generic customers for examples
-INSERT INTO Customer (firstName, middleName, lastName, address, ID_type, IDnumber, registration_date) VALUES
+INSERT INTO customer (firstName, middleName, lastName, address, ID_type, IDnumber, registration_date) VALUES
     ('James', 'Robert', 'Wilson', '123 Main St, New York, NY', 'Passport', 123456789, '2025-01-15'),
     ('Sarah', 'Elizabeth', 'Johnson', '456 Oak Ave, Boston, MA', 'Passport', 987654321, '2025-02-20'),
     ('Michael', NULL, 'Brown', '789 Pine Rd, Chicago, IL', 'Passport', 456123789, '2025-03-10'),

@@ -11,8 +11,8 @@ SET search_path = project;
 --     Objects    --
 --------------------
 
-drop table if exists HotelChain cascade;
-CREATE TABLE HotelChain(
+drop table if exists hotel_chain cascade;
+CREATE TABLE hotel_chain(
 ChainID Serial Primary Key, --Numeric
 Office_address VARCHAR(150) not null ,
 Num_of_hotels integer, --calculate
@@ -20,19 +20,19 @@ Chain_name VARCHAR(100) NOT NULL,
 Constraint hotelNum check (Num_of_hotels > 0)
 );
 
-drop table if exists HotelChainEmail;
-create table HotelChainEmail(
-hotelChainID Serial references HotelChain ON delete Cascade,
+drop table if exists hotel_chain_email;
+create table hotel_chain_email(
+hotelChainID Serial references hotel_chain ON delete Cascade,
 email Varchar(100) not null,
 Primary key(hotelChainID, email)
 );
 
 
-drop table if exists HotelChainNumber;
-create table HotelChainNumber(
+drop table if exists hotel_chain_number;
+create table hotel_chain_number(
 hotelChainID Serial,
 phoneNum Varchar(20) not null,
-Foreign key(hotelChainID) references HotelChain ON delete Cascade,
+Foreign key(hotelChainID) references hotel_chain ON delete Cascade,
 Primary key(hotelChainID, phoneNum)
 );
 
@@ -45,20 +45,20 @@ numRooms Integer, --calc
 addressLine1 varchar(150) not null,
 city varchar(150) not null,
 country varchar(150) not null,
-hotelChain_id Serial references HotelChain ON delete Cascade,
+hotelChain_id Serial references hotel_chain ON delete Cascade,
 constraint numHotelRooms check (numRooms > 0 )
 -- Primary Key(hotelID)	--+ hotelchainID?references Hotel
 );
 
-drop table if exists HotelEmail;
-create table HotelEmail(
+drop table if exists hotel_email;
+create table hotel_email(
 hotelID Serial references hotel ON delete Cascade,
 email varchar(75) not null,
 Primary Key(hotelID, email)
 );
 
-drop table if exists HotelNumber;
-create table HotelNumber(
+drop table if exists hotel_number;
+create table hotel_number(
 hotelID Serial references hotel ON delete Cascade,
 phoneNum varchar(15) not null,
 Primary Key(hotelID, phoneNum)
@@ -67,8 +67,8 @@ Primary Key(hotelID, phoneNum)
 -------------------------------------------------
 
 -- TODO Constraints
-drop table if exists Room cascade;
-create table Room(
+drop table if exists room cascade;
+create table room(
 room_number Integer, 
 price numeric(8,2), 
 capacity varchar(30),
@@ -85,13 +85,13 @@ Constraint minPrice check (price >= 0),
 Primary Key(hotel_id, room_number)
 );
 
-drop table if exists RoomAmenitie;
-create table RoomAmenitie(
+drop table if exists room_amenities;
+create table room_amenities(
 roomNum Integer,
 hotelID Serial,
 amenities varchar(150),
 Primary key(hotelID, roomNum, amenities),
-Foreign key(hotelID, roomNum) references Room on delete cascade
+Foreign key(hotelID, roomNum) references room on delete cascade
 );
 
 
@@ -101,8 +101,8 @@ Foreign key(hotelID, roomNum) references Room on delete cascade
 
 --Cant be deleted must always be stored how to flatten refernces? -> ?ondelete set Null?
 
-drop table if exists Employee cascade;
-create table Employee(
+drop table if exists employee cascade;
+create table employee(
 EmployeeID Serial Primary Key, 
 firstName varchar(50) not null,
 middleName varchar(50),
@@ -114,18 +114,17 @@ hotel_id Serial references hotel on delete cascade
 
 );
 
---multiple roles per employee?
-drop table if exists EmployeeRole;
-create table EmployeeRole(
-EmployeeID serial references Employee on delete cascade,
+drop table if exists employee_role;
+create table employee_role(
+EmployeeID serial references employee on delete cascade,
 role varchar(75),
 Primary key(EmployeeID, role)
 ); 
 
 -------------------------------------------------
 
-drop table if exists Customer cascade;
-create table Customer(
+drop table if exists customer cascade;
+create table customer(
 customerID Serial Primary Key,  
 firstName varchar(30) not null,
 middleName varchar(30),
@@ -145,14 +144,14 @@ Constraint validIDtype check (ID_type = 'Drivers Licence' or ID_type ='Passport'
 --Cant be deleted must always be stored
 
 -- make times into timestamps + double check
-drop table if exists Booking cascade;
-create table Booking(
+drop table if exists booking cascade;
+create table booking(
  bookingID Serial Primary Key,
  check_in_date date not null, 
  check_out_date date not null, 
  booking_date date not null, 
  --roomInfo
- customer_id Serial references Customer --on delete cascade --ID
+ customer_id Serial references customer --on delete cascade --ID
  
  --,constraint validCheckIn check (),
  --constraint validCheckOut check (),
@@ -161,24 +160,24 @@ create table Booking(
 
 -------------------------------------------------
 
-drop table if exists Renting cascade;
-create table Renting(
+drop table if exists renting cascade;
+create table renting(
 rentalID serial primary key, 
-employee_id serial references Employee, -- on delete cascade, 
+employee_id serial references employee, -- on delete cascade,
 room_num integer,
 hotelID serial, 
-booking_id Serial references Booking,-- on delete cascade, 
-customer_id Serial references Customer,-- on delete cascade,
+booking_id Serial references booking,-- on delete cascade,
+customer_id Serial references customer,-- on delete cascade,
 
-Foreign Key(hotelID, room_num) references Room
+Foreign Key(hotelID, room_num) references room
 );
 
 
 --------------------
 --    Archive     --
 --------------------
-drop table if exists Archive cascade;
-create table Archive(
+drop table if exists archive cascade;
+create table archive(
  archiveID varchar(15) Primary Key,  --booking/rental ID
  archive_date date,
  room_num integer, 
@@ -194,10 +193,10 @@ create table Archive(
 --------------------
 --   Relations    --
 --------------------
-drop table if exists Owns cascade;
-create table Owns(
- chainID Serial references HotelChain ON Delete CAscade,
- hotelID Serial references Hotel ON DElete CAscade, 
+drop table if exists owns cascade;
+create table owns(
+ chainID Serial references hotel_chain ON Delete CAscade,
+ hotelID Serial references hotel ON DElete CAscade,
  star_rating Integer,
  
  Constraint minStars check (0 < star_rating and star_rating < 6),
