@@ -13,21 +13,22 @@ public class HotelService {
 
     //returns all hotels
     public List<Hotel> getHotels() throws Exception {
-        String query = "SELECT * FROM Hotel";
+        String query = "SELECT * FROM hotel";
         Database db = new Database();
 
         List<Hotel> hotels = new ArrayList<Hotel>();
         try (Connection con = db.getConncetion()) {
             PreparedStatement stmt = con.prepareStatement(query);
-            ResultSet rs = stmt.getResultSet();
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Hotel hotel = new Hotel(
-                        rs.getInt("id"),
-                        rs.getString("streetAddress"),
+                        rs.getInt("hotelID"),
+                        rs.getString("addressLine1"),
                         rs.getString("city"),
                         rs.getString("country"),
-                        rs.getInt("numRooms")
+                        rs.getInt("numRooms"),
+                        rs.getInt("hotelChain_id")
                 );
                 hotels.add(hotel);
             }
@@ -56,11 +57,12 @@ public class HotelService {
 
             while (rs.next()) {
                 Hotel hotel = new Hotel(
-                        rs.getInt("id"),
-                        rs.getString("streetAddress"),
+                        rs.getInt("hotelID"),
+                        rs.getString("addressLine1"),
                         rs.getString("city"),
                         rs.getString("country"),
-                        rs.getInt("numRooms")
+                        rs.getInt("numRooms"),
+                        rs.getInt("hotelChain_id")
                 );
                 hotels.add(hotel);
             }
@@ -89,11 +91,12 @@ public class HotelService {
 
             while (rs.next()) {
                 Hotel hotel = new Hotel(
-                        rs.getInt("id"),
-                        rs.getString("streetAddress"),
+                        rs.getInt("hotelID"),
+                        rs.getString("addressLine1"),
                         rs.getString("city"),
                         rs.getString("country"),
-                        rs.getInt("numRooms")
+                        rs.getInt("numRooms"),
+                        rs.getInt("hotelChain_id")
                 );
                 hotels.add(hotel);
             }

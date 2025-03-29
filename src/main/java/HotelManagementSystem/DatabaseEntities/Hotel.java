@@ -2,6 +2,7 @@ package HotelManagementSystem.DatabaseEntities;
 
 public class Hotel {
 
+    private int hotelChainID;
     private int hotelID;
     private int numRooms;
     private String streetAddress;
@@ -16,12 +17,13 @@ public class Hotel {
     //private int HotelChain
 
     /*Constructors*/
-    public Hotel(int hotelID, String streetAddress, String city, String country, int numRooms) {
+    public Hotel(int hotelID, String streetAddress, String city, String country, int numRooms, int hotelChainID) {
         this.hotelID = hotelID;
         this.country = country;
         this.city = city;
         this.streetAddress = streetAddress;
         this.numRooms = numRooms;
+        this.hotelChainID = hotelChainID;
     }
 
     /*Getters*/
@@ -30,6 +32,7 @@ public class Hotel {
     public String getStreetAddress() { return streetAddress; }
     public String getCity() { return city; }
     public String getCountry() { return country; }
+    public int getHotelChainID() { return hotelChainID; }
 
     /*Setters*/
     public void setHotelID(int hotelID) { this.hotelID = hotelID; }

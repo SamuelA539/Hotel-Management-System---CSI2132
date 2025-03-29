@@ -38,8 +38,8 @@ Primary key(hotelChainID, phoneNum)
 
 -- -------------------------------------------------
 
-drop table if exists Hotel cascade;
-create table Hotel(
+drop table if exists hotel cascade;
+create table hotel(
 hotelID Serial Primary Key,
 numRooms Integer, --calc
 addressLine1 varchar(150) not null,
@@ -52,14 +52,14 @@ constraint numHotelRooms check (numRooms > 0 )
 
 drop table if exists HotelEmail;
 create table HotelEmail(
-hotelID Serial references Hotel ON delete Cascade,
+hotelID Serial references hotel ON delete Cascade,
 email varchar(75) not null,
 Primary Key(hotelID, email)
 );
 
 drop table if exists HotelNumber;
 create table HotelNumber(
-hotelID Serial references Hotel ON delete Cascade,
+hotelID Serial references hotel ON delete Cascade,
 phoneNum varchar(15) not null,
 Primary Key(hotelID, phoneNum)
 );
@@ -75,7 +75,7 @@ capacity varchar(30),
 view_type varchar(15), 
 is_extendable boolean not null, 
 is_damaged boolean not null,
-hotel_id Serial references Hotel ON delete cascade,
+hotel_id Serial references hotel ON delete cascade,
 
 --Constraint minCapacity check (capacity > 0),
 Constraint viewType check (view_type = 'sea' or view_type = 'mountain' or view_type = 'city' or view_type='ocean'),
@@ -110,7 +110,7 @@ lastName varchar(50) not null,
 address varchar(100) not null, 
 ID_type varchar(25) not null,
 personalID Numeric not null,
-hotel_id Serial references Hotel on delete cascade
+hotel_id Serial references hotel on delete cascade
 
 );
 
