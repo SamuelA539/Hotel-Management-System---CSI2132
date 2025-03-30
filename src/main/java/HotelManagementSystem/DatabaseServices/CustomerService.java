@@ -10,9 +10,6 @@ import java.sql.PreparedStatement;
 import java.time.LocalDate;
 
 public class CustomerService {
-    //TODO:
-    // delete
-
 
     //create Customer
     public String createCustomer(Customer cust) throws Exception{
@@ -58,7 +55,6 @@ public class CustomerService {
     }
 
     //update Customer
-        //todo fix
     public String updateCustomer(Customer cust) throws Exception{
         String message = "";
 
@@ -67,7 +63,7 @@ public class CustomerService {
 
 
         String query = "UPDATE Customer SET " +
-                "firstName=?, middleName=?, lastName=?, address=?, ID_type=?, personalID=? " +
+                "firstName=?, middleName=?, lastName=?, address=?, ID_type=?, IDnumber=? " +
                 "WHERE CustomerID=?;";
         try {
             con = db.getConncetion();
@@ -101,20 +97,55 @@ public class CustomerService {
         return message;
     }
 
+    public String deleteCustomer(int custID) throws Exception {
+        String message = "";
+        Connection con = null;
 
-    public static void main(String[] args) throws Exception{
-        CustomerService cs = new CustomerService();
+        String sql = "DELETE FROM customer WHERE customerID=?;";
+        Database db = new Database();
 
-        Person p = new Person("first", "M.", "last","testStreet","passport",999 );
-        Customer test = new Customer(p, 199 );
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, custID);
 
-        //adding Customer(WORKS)
-        //cs.createCustomer(test);
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Customer Deletion Query Executed Successfully");
+            } else {
+                System.out.println("Error in Customer Deletion Query Execution");
+            }
 
-        //Updating customer ()
-        test.getCustomer().setFirstName("Tom");
-        String res = cs.updateCustomer(test);
-        System.out.println(res);
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error while deleting Customer: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Customer successfully deleted";
+        }
+
+        return message;
     }
+
+//
+//    public static void main(String[] args) throws Exception{
+//        CustomerService cs = new CustomerService();
+//
+//        Person p = new Person("first", "M.", "last","testStreet","passport",999 );
+//        Customer test = new Customer(p, 199 );
+//
+////        adding Customer(WORKS)
+//        cs.createCustomer(test);
+//
+//        //Updating customer ()
+//        test.getCustomer().setFirstName("Tom");
+//        String res = cs.updateCustomer(test);
+//        System.out.println(res);
+//
+//        //deleting customer
+//        res = cs.deleteCustomer(test.getCustomerID());
+//        System.out.println(res);
+//    }
 
 }

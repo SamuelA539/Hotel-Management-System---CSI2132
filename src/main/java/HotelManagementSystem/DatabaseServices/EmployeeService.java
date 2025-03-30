@@ -2,15 +2,14 @@ package HotelManagementSystem.DatabaseServices;
 
 import HotelManagementSystem.Database;
 import HotelManagementSystem.DatabaseEntities.Employee;
-
+import HotelManagementSystem.DatabaseEntities.Person;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class EmployeeService {
     //TODO:
-    // delete
-    // INSERT & UPDATE related tables
+    // INSERT & UPDATE & DELETE related tables
 
     //create Employee
     public String createEmployee(Employee emp) throws Exception{
@@ -98,6 +97,35 @@ public class EmployeeService {
         return message;
     }
 
+    public String deleteEmployee(int empID, int hotelID) throws Exception {
+        String message = "";
+        Connection con = null;
+
+        Database db = new Database();
+        String sql = "DELETE FROM employee WHERE EmployeeID=?";
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, empID);
+            //stmt.setInt(2, hotelID);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Hotel Employee Query Executed Successfully");
+            } else {
+                System.out.println("Error in Employee Deletion Query Execution");
+            }
+
+            stmt.close();
+        } catch (Exception e) {
+            message = "Error deleteing Employee: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Successfully deleted Employee";
+        }
+        return message;
+    }
 
 //    public static void main(String[] args) throws Exception {
 //        EmployeeService es = new EmployeeService();
@@ -110,6 +138,9 @@ public class EmployeeService {
 //        // updating employee with existing hotel(WORKS)
 //        test.getEmployee().setFirstName("Tim");
 //        String res = es.updateEmployee(test);
+//        System.out.println(res);
+//
+//        res = es.deleteEmployee(test.getEmployeeID(), 0);
 //        System.out.println(res);
 //    }
 

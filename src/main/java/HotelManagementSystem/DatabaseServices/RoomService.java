@@ -13,6 +13,7 @@ import java.util.List;
     //Complex Queries with no Lists VS Simple Queries with list sorting
 public class RoomService {
     //TODO: +queries
+    //  INSERT & UPDATE & DELETE related tables
     //the dates (start, end) of booking or renting ?
 
 
@@ -74,7 +75,6 @@ public class RoomService {
         }
     }
 
-
     public String createRoom(Room room) throws Exception {
         String message = "";
         Connection con = null;
@@ -117,7 +117,6 @@ public class RoomService {
         return message;
     }
 
-    //TODO fix
     public String updateRoom(Room room) throws Exception {
         String message = "";
         Connection con = null;
@@ -126,7 +125,7 @@ public class RoomService {
 
         String insertQuery = "UPDATE Room set" +
                 "price=?, capacity=?, view_type=?, is_extendable=?, is_damaged=? " +
-                "WHERE hotelID=?, room_number=?;";
+                "WHERE hotelID=? and room_number=?;";
 
         try {
             con = db.getConncetion();
@@ -160,21 +159,56 @@ public class RoomService {
         return message;
     }
 
+    public String deleteRoom(int roomNum, int hotelID) throws Exception {
+        String message = "";
+        Connection con = null;
 
-    //TESTs
-    public static void main(String[] args) throws Exception {
-        RoomService rs = new RoomService();
+        String sql = "DELETE FROM room WHERE room_number=? and hotel_id=?";
+        Database db = new Database();
 
-        //adding room to existing hotel(WORKS)
-        Room test = new Room(99, 99.99F,"single","city",true,false, 101);
-//        rs.createRoom(test);
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
 
-        //updating room(Error)
-        test.setDamaged(true);
+            stmt.setInt(1,roomNum);
+            stmt.setInt(2, hotelID);
 
-        String res = rs.updateRoom(test);
-        System.out.println(res);
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Room Deletion Query Executed Successfully");
+            } else {
+                System.out.println("Error in Room Deletion Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error Deleting Room: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Successfully deleted Room";
+        }
+        return message;
     }
+
+//    //TESTs
+//    public static void main(String[] args) throws Exception {
+//
+//        RoomService rs = new RoomService();
+//
+//        //adding room to existing hotel(WORKS)
+//        Room test = new Room(99, 99.99F,"single","city",true,false, 101);
+////        rs.createRoom(test);
+//
+//        //updating room(Error)
+//        test.setDamaged(true);
+//
+//        String res = rs.updateRoom(test);
+//        System.out.println(res);
+//
+//        res = rs.deleteRoom(test.getRoomNum(), test.getHotelID());
+//        System.out.println(res);
+//    }
 
 
 }

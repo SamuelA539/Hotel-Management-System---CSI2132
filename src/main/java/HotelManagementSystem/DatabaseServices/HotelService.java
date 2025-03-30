@@ -3,6 +3,7 @@ package HotelManagementSystem.DatabaseServices;
 import HotelManagementSystem.Database;
 import HotelManagementSystem.DatabaseEntities.Hotel;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,8 +12,7 @@ import java.util.List;
 
 public class HotelService {
     //TODO:
-    // delete
-    // INSERT & UPDATE related tables
+    //INSERT & UPDATE & DELETE related tables
 
     //returns all hotels
     public List<Hotel> getHotels() throws Exception {
@@ -47,7 +47,7 @@ public class HotelService {
         }
     }
 
-    //getHotelByCity !NEEDS TESTING!
+    //getHotelByCity
     public List<Hotel> getHotelsByCity(String city) throws Exception {
         String query = "SELECT * FROM Hotel WHERE Hotel.city='"+city+"'";
         Database db = new Database();
@@ -80,8 +80,8 @@ public class HotelService {
         }
     }
 
-    //getHotelByCountry !NEEDS TESTING!
-    public List<Hotel> getHotelByCountry(String country) throws Exception {
+    //getHotelByCountry
+    public List<Hotel> getHotelsByCountry(String country) throws Exception {
         String query = "SELECT * FROM Hotel WHERE hotel.country='"+country+"'";
         Database db = new Database();
 
@@ -117,8 +117,8 @@ public class HotelService {
 
 
 
-    //insertHotel
-    public String createHotel(Hotel hotel) throws Exception{
+    //insertHotel to existing chain
+    public String createHotel(Hotel hotel) throws Exception {
         String message = "";
         Connection con = null;
 
@@ -141,7 +141,11 @@ public class HotelService {
             stmt.setInt(6, hotel.getHotelChainID());
 
             int out = stmt.executeUpdate();
-            System.out.println("Output(1 = success): " + out );
+            if (out == 1) {
+                System.out.println("Hotel Insertion Query Executed Successfully");
+            } else {
+                System.out.println("Error in Hotel Insertion Query Execution");
+            }
 
             stmt.close();
 
@@ -149,7 +153,7 @@ public class HotelService {
             message = "Error While Inserting Hotel: " + e.getMessage();
         } finally {
             if (con != null)  con.close();
-            if (message.isEmpty()) message =   "Hotel Successfully Inserted";
+            if (message.isEmpty()) message = "Hotel Successfully Inserted";
         }
         return message;
 
@@ -157,7 +161,7 @@ public class HotelService {
 
     //updateHotel
         //TODO what attributes can change?(HotelChainID)
-    public String updateHotel (Hotel hotel) throws Exception {
+    public String updateHotel(Hotel hotel) throws Exception {
         Connection con = null;
         String message = "";
 
@@ -194,18 +198,57 @@ public class HotelService {
         return message;
     }
 
+    //delete hotel
+    public String deleteHotel(int hotelID) throws Exception {
+        String message = "";
+        Connection con = null;
 
-//    //testing Service
+        String sql = "DELETE FROM hotel WHERE hotelID = ?;";
+        Database db = new Database();
+
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, hotelID);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Hotel Deletion Query Executed Successfully");
+            } else {
+                System.out.println("Error in Hotel Deletion Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error while deleting hotel: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Hotel successfully deleted";
+        }
+
+        return message;
+    }
+
+
+    //testing Service
 //    public static void main(String[] args)  throws Exception{
 //        HotelService hs = new HotelService();
+////        // adding hotel to existing chain(WORKS)
+////        Hotel test = new Hotel(99, "testStreet", "testCity", "testCountry",100,1);
+////        hs.createHotel(test);
+////
+////        //Testing hotel update(WORKS)
+////        test.setCity("CapitalCity");
+////        hs.updateHotel(test);
+////
+////        String res = hs.deleteHotel(test.getHotelID());
+////        System.out.println(res);
 //
-//        // adding hotel to existing chain(WORKS)
-//        Hotel test = new Hotel(99, "testStreet", "testCity", "testCountry",100,1);
-//        hs.createHotel(test);
-//
-//        //Testing hotel update(WORKS)
-//        test.setCity("CapitalCity");
-//        hs.updateHotel(test);
+////        List<Hotel> hotels = hs.getHotelsByCountry("Japan");
+////        for (Hotel hotel: hotels) {
+////            System.out.println(hotel.getCity());
+////        }
 //
 //    }
 

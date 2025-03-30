@@ -4,11 +4,9 @@ Schema created open to changes
 
 + hotel rooms
 TODO:
-    DB indexing: lab 10
-    DB Views
-
-    DB connection
     toString
+
+
 
 Room Search Criteria
     the dates (start, end) of booking or renting,
