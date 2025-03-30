@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotelService {
+    //TODO:
+    // update
+    // insert
+    // delete
 
     //returns all hotels
     public List<Hotel> getHotels() throws Exception {
@@ -44,8 +48,7 @@ public class HotelService {
         }
     }
 
-    //getHotelByCity
-        //TODO test if needed
+    //getHotelByCity !NEEDS TESTING!
     public List<Hotel> getHotelsByCity(String city) throws Exception {
         String query = "SELECT * FROM Hotel WHERE Hotel.city='"+city+"'";
         Database db = new Database();
@@ -53,7 +56,7 @@ public class HotelService {
         List<Hotel> hotels = new ArrayList<Hotel>();
         try (Connection con = db.getConncetion()) {
             PreparedStatement stmt = con.prepareStatement(query);
-            ResultSet rs = stmt.getResultSet();
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Hotel hotel = new Hotel(
@@ -78,8 +81,7 @@ public class HotelService {
         }
     }
 
-    //getHotelByCountry
-        //TODO test if needed
+    //getHotelByCountry !NEEDS TESTING!
     public List<Hotel> getHotelByCountry(String country) throws Exception {
         String query = "SELECT * FROM Hotel WHERE hotel.country='"+country+"'";
         Database db = new Database();
@@ -87,7 +89,7 @@ public class HotelService {
         List<Hotel> hotels = new ArrayList<Hotel>();
         try (Connection con = db.getConncetion()) {
             PreparedStatement stmt = con.prepareStatement(query);
-            ResultSet rs = stmt.getResultSet();
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Hotel hotel = new Hotel(
@@ -115,4 +117,5 @@ public class HotelService {
     //getByHotelChainIDs "SELECT * FROM Hotel WHERE hotel.hotelChain_ID='"+chainID+"'";
 
     //updateHotel
+    //deleteHotel
 }

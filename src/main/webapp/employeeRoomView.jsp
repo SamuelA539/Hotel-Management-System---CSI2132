@@ -1,15 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page import="java.util.List" %>
-<%@ page import="HotelManagementSystem.DatabaseEntities.Hotel" %>
-<%@ page import="HotelManagementSystem.DatabaseServices.HotelService" %>
+<%@ page import="HotelManagementSystem.DatabaseEntities.Room" %>
+<%@ page import="HotelManagementSystem.DatabaseServices.RoomService" %>
 <%@ page import="java.util.ArrayList" %>
 
 <%
-    HotelService hotelService = new HotelService();
-    List<Hotel> hotels = null;
+    RoomService roomService = new RoomService();
+    List<Room> rooms = null;
     try {
-        hotels = hotelService.getHotels();
+        rooms = roomService.getRooms();
+
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -26,31 +27,91 @@
 
 <body>
     <h2>Employee View</h2>
-    <% if(hotels == null || hotels.size() == 0) { %>
-        <h4>No Hotels Found</h4>
+    <% if (rooms == null || rooms.size() == 0) { %>
+        <h4>No Hotel Rooms Found</h4>
     <%} else {%>
+
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Street Address</th>
-                    <th>City</th>
-                    <th>Country</th>
-                    <th>Number Of Rooms</th>
+                    <th>Room Number</th>
+                    <th>Price</th>
+                    <th>Capacity</th>
+                    <th>ViewType</th>
+                    <th>Extendable</th>
+                    <th>Damaged</th>
                 </tr>
             </thead>
 
             <tbody>
-                <% for (Hotel hotel: hotels) {%>
+
+                <tr>
+
+                <td>
+                <select>
+                <option value="HotelID1">HotelID1</option>
+                <option value="HotelID2">HotelID2</option>
+                <option value="HotelID3">HotelID3</option>
+                <select>
+                </td>
+
+                <td>
+                <select>
+                <option value="price1">price1</option>
+                <option value="price2">price2</option>
+                <option value="price3">price3</option>
+                </select>
+                </td>
+
+                <td>
+                <select>
+                <option value="Capacity1">Capacity1</option>
+                <option value="Capacity2">Capacity2</option>
+                <option value="Capacity3">Capacity3</option>
+                </select>
+                </td>
+
+                <td>
+                <select>
+                <option value="ViewType1">ViewType1</option>
+                <option value="ViewType2">ViewType2</option>
+                <option value="ViewType3">ViewType3</option>
+                </select>
+                </td>
+
+                <td>
+                <select>
+                <option value="Extendable-True">True</option>
+                <option value="Extendable-False">False</option>
+                </select>
+                </td>
+
+                <td>
+                <select>
+                <option value="Damaged-True">True</option>
+                <option value="Damaged-False">False</option>
+                </select>
+                </td>
+
+                </tr>
+
+                <%
+                    //java code to organize rooms list by selection values
+                %>
+
+                <% for (Room room: rooms) {%>
                     <tr>
-                        <td> <%= hotel.getHotelID() %> </td>
-                        <td> <%= hotel.getStreetAddress() %> </td>
-                        <td> <%= hotel.getCity() %> </td>
-                        <td> <%= hotel.getCountry() %> </td>
-                        <td> <%= hotel.getNumRooms() %> </td>
+                        <td> <%= room.getRoomNum() %> </td>
+                        <td> <%= room.getPrice() %> </td>
+                        <td> <%= room.getCapacity() %> </td>
+                        <td> <%= room.getViewType() %> </td>
+                        <td> <%= room.isExtendable() %> </td>
+                        <td> <%= room.isDamaged() %> </td>
                     </tr>
                 <% } %>
+
             </tbody>
+
         </table>
     <% } %>
 

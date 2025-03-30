@@ -18,3 +18,152 @@ Room Search Criteria
     the category of the hotel,
     the total number of rooms in the hotel,
     the price of the rooms
+
+
+
+
+
+
+
+
+
+--- Room Serivce Obselete Methods ---
+
+
+    //----Complex Queries----
+    //!!!CASE SENSITIVE inputs!!!
+
+    //Get rooms by capacity
+    public List<Room> getRoomsByCapacity(String capacity) throws Exception {
+        String query = "SELECT * FROM room WHERE Room.capacity = '"+ capacity +"'";
+        Database db = new Database();
+        List<Room> rooms = new ArrayList<Room>();
+        try(Connection con = db.getConncetion()) {
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.getResultSet();
+
+            while (rs.next()) {
+                Room room = new Room(
+                        rs.getInt("room_number"),
+                        rs.getFloat("price"),
+                        rs.getString("capacity"),
+                        rs.getString("view_type"),
+                        rs.getBoolean("is_extendable"),
+                        rs.getBoolean("is_damaged")
+//                        rs.getInt("hotel_id")
+                );
+                rooms.add(room);
+
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+            db.close();
+
+            return rooms;
+        } catch (Exception e) {
+            throw new Exception("Error Getting Hotels: " + e.getMessage());
+        }
+    }
+
+    //Get rooms by City
+    public List<Room> getRoomsByCity(String city) throws Exception {
+        String query = "SELECT * FROM room WHERE room.hotel_ID IN (Select hotelID FROM hotel WHERE hotel.city = '" + city + "')";
+        Database db = new Database();
+        List<Room> rooms = new ArrayList<Room>();
+        try (Connection con = db.getConncetion()) {
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.getResultSet();
+
+            while (rs.next()) {
+                Room room = new Room(
+                        rs.getInt("room_number"),
+                        rs.getFloat("price"),
+                        rs.getString("capacity"),
+                        rs.getString("view_type"),
+                        rs.getBoolean("is_extendable"),
+                        rs.getBoolean("is_damaged")
+//                        rs.getInt("hotel_id")
+                );
+                rooms.add(room);
+
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+            db.close();
+
+            return rooms;
+        } catch (Exception e) {
+            throw new Exception("Error Getting Hotels: " + e.getMessage());
+        }
+    }
+
+    //Get rooms by City
+    public List<Room> getRoomsByCountry(String country) throws Exception {
+        String query = "SELECT * FROM room WHERE room.hotel_ID IN (Select hotelID FROM hotel WHERE hotel.country = '"+ country +"')";
+        Database db = new Database();
+        List<Room> rooms = new ArrayList<Room>();
+        try (Connection con = db.getConncetion()) {
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.getResultSet();
+
+            while (rs.next()) {
+                Room room = new Room(
+                        rs.getInt("room_number"),
+                        rs.getFloat("price"),
+                        rs.getString("capacity"),
+                        rs.getString("view_type"),
+                        rs.getBoolean("is_extendable"),
+                        rs.getBoolean("is_damaged")
+//                        rs.getInt("hotel_id")
+                );
+                rooms.add(room);
+
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+            db.close();
+
+            return rooms;
+        } catch (Exception e) {
+            throw new Exception("Error Getting Hotels: " + e.getMessage());
+        }
+    }
+
+    //Get hotel by ChainName
+    public List<Room> getRoomsByHotelChain(String chainName) throws Exception {
+        String query = "SELECT * FROM room WHERE room.hotel_ID IN " +
+                "(Select hotelID FROM hotel WHERE hotel.hotelchain_id IN " +
+                "(Select chainID FROM hotelchain WHERE hotelchain.Chain_name= '" + chainName + ") )";
+
+        Database db = new Database();
+        List<Room> rooms = new ArrayList<Room>();
+        try (Connection con = db.getConncetion()) {
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.getResultSet();
+
+            while (rs.next()) {
+                Room room = new Room(
+                        rs.getInt("room_number"),
+                        rs.getFloat("price"),
+                        rs.getString("capacity"),
+                        rs.getString("view_type"),
+                        rs.getBoolean("is_extendable"),
+                        rs.getBoolean("is_damaged")
+//                        rs.getInt("hotel_id")
+                );
+                rooms.add(room);
+
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+            db.close();
+
+            return rooms;
+        } catch (Exception e) {
+            throw new Exception("Error Getting Hotels: " + e.getMessage());
+        }
+    }

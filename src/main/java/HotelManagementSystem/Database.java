@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-//TODO:
-// Set Login Vars
 public class Database {
 
     /* Database connection settings, change dbName, dbusername, dbpassword */
@@ -14,7 +12,9 @@ public class Database {
     private final String dbName = "postgres";
 
     private final String dbusername = "postgres";
-    private final String dbpassword = "";
+    private final String dbpassword = "password";
+
+    private String JDBC_URL = "jdbc:postgresql://localhost:5432/"+dbName+"?currentSchema=project";
 
     private Connection con = null;
 
@@ -25,7 +25,7 @@ public class Database {
     public Connection getConncetion() throws Exception {
         try {
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://"+ ipAddress + ":" + dbServerPort + "/" + dbName,
+            con = DriverManager.getConnection("jdbc:postgresql://"+ ipAddress + ":" + dbServerPort + "/" + dbName+"?currentSchema=project",
                     dbusername,
                     dbpassword);
             return con;
@@ -47,5 +47,16 @@ public class Database {
             throw new SQLException("Could not close Connection with Database Server: " + e.getMessage());
         }
     }
+
+//    public static void main(String[] args) {
+//        Database db = new Database();
+//        try {
+//            db.getConncetion();
+//        } catch (Exception e) {
+//            System.out.println("Opps: " + e.getMessage());
+//        }
+//        System.out.println("Done");
+//
+//    }
 
 }
