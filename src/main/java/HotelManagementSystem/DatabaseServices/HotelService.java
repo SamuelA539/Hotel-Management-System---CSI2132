@@ -19,7 +19,7 @@ public class HotelService {
         String query = "SELECT * FROM hotel";
         Database db = new Database();
 
-        List<Hotel> hotels = new ArrayList<Hotel>();
+        List<Hotel> hotels = new ArrayList<>();
         try (Connection con = db.getConncetion()) {
             PreparedStatement stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
