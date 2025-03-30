@@ -27,8 +27,22 @@ Room Search Criteria
 
 
 
---- Room Serivce Obselete Methods ---
+--- Room Service Obsolete Methods ---
 
+    //category of the hotel
+        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID from OWNS where owns.star_rating="+ stars +")";]
+        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID from OWNS where owns.star_rating<"+ maxStars +")";]
+        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID from OWNS where owns.star_rating>"+ minStars +")";]
+
+    //total number of rooms in the hotel
+        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID FROM Hotel WHERE hotel.numRooms >" +minRooms+ "AND hotel.numRooms <"+maxRooms+)";]
+        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID FROM Hotel WHERE hotel.numRooms >" +minRooms+ ")";]
+        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID FROM Hotel WHERE hotel.numRooms < "+ maxRooms +")";]
+
+    //price of the rooms
+        //[String query = "SELECT * FROM Room WHERE Room.price > min and Room.price < max ";]
+        //[String query = "SELECT * FROM Room WHERE Room.price > min";]
+        //[String query = "SELECT * FROM Room WHERE Room.price < max";]
 
     //----Complex Queries----
     //!!!CASE SENSITIVE inputs!!!

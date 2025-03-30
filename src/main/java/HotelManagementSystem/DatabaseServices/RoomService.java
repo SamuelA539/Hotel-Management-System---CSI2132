@@ -15,22 +15,6 @@ public class RoomService {
     //TODO: +queries
     //the dates (start, end) of booking or renting ?
 
-/*
-    //category of the hotel
-        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID from OWNS where owns.star_rating="+ stars +")";]
-        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID from OWNS where owns.star_rating<"+ maxStars +")";]
-        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID from OWNS where owns.star_rating>"+ minStars +")";]
-
-    //total number of rooms in the hotel
-        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID FROM Hotel WHERE hotel.numRooms >" +minRooms+ "AND hotel.numRooms <"+maxRooms+)";]
-        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID FROM Hotel WHERE hotel.numRooms >" +minRooms+ ")";]
-        //[String query = "SELECT * FROM Room WHERE Room.hotel_ID IN (Select hotelID FROM Hotel WHERE hotel.numRooms < "+ maxRooms +")";]
-
-    //price of the rooms
-        //[String query = "SELECT * FROM Room WHERE Room.price > min and Room.price < max ";]
-        //[String query = "SELECT * FROM Room WHERE Room.price > min";]
-        //[String query = "SELECT * FROM Room WHERE Room.price < max";]
-*/
 
     //Get all rooms
     public List<Room> getRooms() throws Exception {
@@ -67,8 +51,8 @@ public class RoomService {
                             rs.getString("capacity"),
                             rs.getString("view_type"),
                             rs.getBoolean("is_extendable"),
-                            rs.getBoolean("is_damaged")
-//                       rs.getInt("hotel_id")
+                            rs.getBoolean("is_damaged"),
+                            rs.getInt("hotel_id")
                     );
                     rooms.add(room);
                 }
@@ -91,28 +75,106 @@ public class RoomService {
     }
 
 
+    public String createRoom(Room room) throws Exception {
+        String message = "";
+        Connection con = null;
 
-//    public static void main(String[] args) throws Exception {
-//        RoomService roomService = new RoomService();
-//        List<Room> rooms = null;
-//
-//        try {
-//            rooms = roomService.getRooms();
-//        } catch (Exception e) {
-//            throw new Exception("oops: " + e.getMessage());
-//        }
-//
-//        if (rooms != null) {
-//            System.out.println("looping rooms");
-//            //System.out.println(rooms.get(0).getRoomNum());
-//
-//            for (Room room: rooms) {
-//                System.out.println(room.getRoomNum());
-//            }
-//
-//        }else {
-//            System.out.println("Rooms null");
-//        }
-//    }
+        Database db = new Database();
+
+        String insertQuery = "INSERT INTO Room " +
+                "(room_number, price, capacity, view_type, is_extendable, is_damaged, hotel_id) " +
+                "VALUES (?,?,?,?,?,?,?);";
+
+        try {
+            con = db.getConncetion();
+
+            PreparedStatement stmt = con.prepareStatement(insertQuery);
+
+            stmt.setInt(1, room.getRoomNum());
+            stmt.setFloat(2, room.getPrice());
+            stmt.setString(3,room.getCapacity());
+            stmt.setString(4, room.getViewType());
+            stmt.setBoolean(5, room.isExtendable());
+            stmt.setBoolean(6, room.isDamaged());
+            stmt.setInt(7, room.getHotelID());
+
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Room Insertion Query Executed Successfully");
+            } else {
+                System.out.println("Error in Room Insertion Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error While Inserting Room: " + e.getMessage();
+        } finally {
+            if (con != null)  con.close();
+            if (message.isEmpty()) message = "Room Successfully Inserted";
+        }
+        return message;
+    }
+
+    //TODO fix
+    public String updateRoom(Room room) throws Exception {
+        String message = "";
+        Connection con = null;
+
+        Database db = new Database();
+
+        String insertQuery = "UPDATE Room set" +
+                "price=?, capacity=?, view_type=?, is_extendable=?, is_damaged=? " +
+                "WHERE hotelID=?, room_number=?;";
+
+        try {
+            con = db.getConncetion();
+
+            PreparedStatement stmt = con.prepareStatement(insertQuery);
+
+            stmt.setFloat(1, room.getPrice());
+            stmt.setString(2, room.getCapacity());
+            stmt.setString(3, room.getViewType());
+            stmt.setBoolean(4, room.isExtendable());
+            stmt.setBoolean(5, room.isDamaged());
+
+            stmt.setInt(6, room.getRoomNum());
+            stmt.setInt(7, room.getHotelID());
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Room Update Query Executed Successfully");
+            } else {
+                System.out.println("Error in Room Update Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error While Inserting Room: " + e.getMessage();
+        } finally {
+            if (con != null)  con.close();
+            if (message.isEmpty()) message = "Room Successfully Inserted";
+        }
+        return message;
+    }
+
+
+    //TESTs
+    public static void main(String[] args) throws Exception {
+        RoomService rs = new RoomService();
+
+        //adding room to existing hotel(WORKS)
+        Room test = new Room(99, 99.99F,"single","city",true,false, 101);
+//        rs.createRoom(test);
+
+        //updating room(Error)
+        test.setDamaged(true);
+
+        String res = rs.updateRoom(test);
+        System.out.println(res);
+    }
+
 
 }

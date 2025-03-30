@@ -69,7 +69,7 @@ Primary Key(hotelID, phoneNum)
 -- TODO Constraints
 drop table if exists room cascade;
 create table room(
-room_number Integer, 
+room_number Integer,
 price numeric(8,2), 
 capacity varchar(30),
 view_type varchar(15), 
