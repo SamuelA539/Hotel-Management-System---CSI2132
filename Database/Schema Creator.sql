@@ -168,6 +168,8 @@ room_num integer,
 hotelID serial, 
 booking_id Serial references booking,-- on delete cascade,
 customer_id Serial references customer,-- on delete cascade,
+check_in_date date not null,
+check_out_date date not null,
 
 Foreign Key(hotelID, room_num) references room
 );
