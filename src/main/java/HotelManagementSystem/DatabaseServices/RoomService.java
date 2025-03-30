@@ -191,20 +191,108 @@ public class RoomService {
         return message;
     }
 
-//    //TESTs
+
+//Related Table services
+    String roomAmenityRelation = "roomamenitie";
+    public String addRoomAmenity(int roomNum, int hotelID, String amenity) throws Exception {
+        String message = "";
+
+        Connection con = null;
+        Database db = new Database();
+
+        String sql = "INSERT INTO " +
+                roomAmenityRelation +
+                " (roomNum, hotelID, amenities) VALUES " +
+                "(?, ?, ?)";
+
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1,roomNum);
+            stmt.setInt(2, hotelID);
+            stmt.setString(3, amenity);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Room Amenity Insert Query Executed Successfully");
+            } else {
+                System.out.println("Error in Room Amenity Insert Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error Inserting Room Amenity: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Room Amenity Inserted Successfully";
+        }
+
+        return message;
+    }
+
+    public String deleteRoomAmenity(int roomNum, int hotelID, String amenity) throws Exception {
+        String message = "";
+
+        Connection con = null;
+        Database db = new Database();
+
+        String sql = "DELETE FROM " +
+                roomAmenityRelation +
+                " WHERE roomNum=? and hotelID=? and amenities=?";
+
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1,roomNum);
+            stmt.setInt(2, hotelID);
+            stmt.setString(3, amenity);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("RoomAmenity DELETE Query Executed Successfully");
+            } else {
+                System.out.println("Error in RoomAmenity DELETE Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error Deleting RoomAmenity: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "RoomAmenity Deleted Successfully";
+        }
+
+        return message;
+    }
+
+
+
+
+    //TESTs
 //    public static void main(String[] args) throws Exception {
 //
 //        RoomService rs = new RoomService();
+//        String res = "";
 //
 //        //adding room to existing hotel(WORKS)
 //        Room test = new Room(99, 99.99F,"single","city",true,false, 101);
-////        rs.createRoom(test);
+//        rs.createRoom(test);
 //
 //        //updating room(Error)
-//        test.setDamaged(true);
+//        //test.setDamaged(true);
+//        //String res = rs.updateRoom(test);
+//        //System.out.println(res);
 //
-//        String res = rs.updateRoom(test);
+//        res = rs.addRoomAmenity(test.getRoomNum(), test.getHotelID(), "stuff");
 //        System.out.println(res);
+//
+//        res = rs.deleteRoomAmenity(test.getRoomNum(), test.getHotelID(), "stuff");
+//        System.out.println(res);
+//
 //
 //        res = rs.deleteRoom(test.getRoomNum(), test.getHotelID());
 //        System.out.println(res);

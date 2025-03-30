@@ -27,11 +27,13 @@
         </div>
         </a>
 
+        <a href="DataModification.jsp">
         <div style="border: 5px solid black">
             <h4>Edit Database</h4>
             <h6>functions</h6>
             <p>Insert, Delete or Update customers, employees, hotels and rooms in Database<p>
         </div>
+        </a>
 
     </body>
 </html>

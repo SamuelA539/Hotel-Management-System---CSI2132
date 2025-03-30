@@ -127,17 +127,102 @@ public class EmployeeService {
         return message;
     }
 
+
+//Related Table services
+    String employeeRoleRelation = "employeerole";
+    public String insertEmployeeRole(int empID, String role) throws Exception {
+        String message = "";
+
+        Connection con = null;
+        Database db = new Database();
+
+        String sql = "INSERT INTO " +
+                employeeRoleRelation +
+                " (EmployeeID, role) VALUES " +
+                "(?, ?)";
+
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1,empID);
+            stmt.setString(2,role);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("EmployeeRole INSERT Query Executed Successfully");
+            } else {
+                System.out.println("Error in EmployeeRole INSERT Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error Inserting EmployeeRole: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "EmployeeRole Inserted Successfully";
+        }
+
+        return message;
+    }
+
+    public String deleteEmployeeRole(int empID, String role) throws Exception {
+        String message = "";
+
+        Connection con = null;
+        Database db = new Database();
+
+        String sql = "DELETE from " +
+                employeeRoleRelation +
+                "WHERE EmployeeID=? and role=?";
+
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1,empID);
+            stmt.setString(2,role);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("EmployeeRole Delete Query Executed Successfully");
+            } else {
+                System.out.println("Error in EmployeeRole Delete Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error Deleting EmployeeRole: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "EmployeeRole Deleted successfully";
+        }
+
+        return message;
+    }
+
+
+
+//
 //    public static void main(String[] args) throws Exception {
 //        EmployeeService es = new EmployeeService();
+//        String res = "";
 //
 //        // adding employee to existing hotel(WORKS)
 //        Person p = new Person("first", "M.", "last","testStreet","passport",999 );
 //        Employee test = new Employee(p, 999, 101);
 //        es.createEmployee(test);
 //
-//        // updating employee with existing hotel(WORKS)
-//        test.getEmployee().setFirstName("Tim");
-//        String res = es.updateEmployee(test);
+////        // updating employee with existing hotel(WORKS)
+////        test.getEmployee().setFirstName("Tim");
+////        String res = es.updateEmployee(test);
+////        System.out.println(res);
+//
+//        res = es.insertEmployeeRole(test.getEmployeeID(), "test");
+//        System.out.println(res);
+//        res = es.deleteEmployeeRole(test.getEmployeeID(),"test");
 //        System.out.println(res);
 //
 //        res = es.deleteEmployee(test.getEmployeeID(), 0);

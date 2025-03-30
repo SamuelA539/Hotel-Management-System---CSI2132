@@ -12,7 +12,7 @@ import java.util.List;
 
 public class HotelService {
     //TODO:
-    //INSERT & UPDATE & DELETE related tables
+    //  INSERT & UPDATE & DELETE related tables
 
     //returns all hotels
     public List<Hotel> getHotels() throws Exception {
@@ -116,6 +116,7 @@ public class HotelService {
     //getByHotelChainName "SELECT * FROM Hotel WHERE hotel.hotelChain_ID='"+chainID+"'";
 
 
+//INSERT UPDATE DELETE methods
 
     //insertHotel to existing chain
     public String createHotel(Hotel hotel) throws Exception {
@@ -231,25 +232,188 @@ public class HotelService {
     }
 
 
+
+//Related Table service
+    String hotelNumberRelation = "hotelnumber";
+    public String insertHotelNumber(int hotelID, String number) throws Exception {
+        String message = "";
+
+        Connection con = null;
+        Database db = new Database();
+
+        String sql = "INSERT INTO "+
+                hotelNumberRelation +
+                " (hotelID, phoneNum)" +
+                "VALUES (?, ?)";
+
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            //
+            stmt.setInt(1, hotelID);
+            stmt.setString(2, number);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Hotel Number INSERT Query Executed Successfully");
+            } else {
+                System.out.println("Error in Hotel Number INSERT Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error Inserting Hotel Number: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Hotel Number Successfully Inserted";
+        }
+
+        return message;
+    }
+
+    public String deleteHotelNumber(int hotelID, String number) throws Exception {
+        String message = "";
+
+        Connection con = null;
+        Database db = new Database();
+
+        String sql = "DELETE FROM" +
+                hotelNumberRelation +
+                " WHERE hotelID=? and phoneNum=?";
+
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, hotelID);
+            stmt.setString(2,number);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Hotel Number Delete Query Executed Successfully");
+            } else {
+                System.out.println("Error in Hotel Number Delete Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error Deleting Hotel Number: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Hotel Number Successfully Deleted";
+        }
+
+        return message;
+    }
+
+    String hotelEmailRelation = "hotelemail";
+    public String insertHotelEmail(int hotelID, String email) throws Exception {
+        String message = "";
+
+        Connection con = null;
+        Database db = new Database();
+
+        String sql = "INSERT INTO " +
+                hotelEmailRelation +
+                " (hotelID, email)" +
+                "VALUES (?, ?)";
+
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, hotelID);
+            stmt.setString(2,email);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Hotel Email Insert Query Executed Successfully");
+            } else {
+                System.out.println("Error in Hotel Email Insert Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error inserting Hotel Email: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Hotel Email Successfully Inserted";
+        }
+
+        return message;
+    }
+
+    public String deleteHotelEmail(int hotelID, String email) throws Exception {
+        String message = "";
+
+        Connection con = null;
+        Database db = new Database();
+
+        String sql = "DELETE FROM " +
+                hotelEmailRelation +
+                " WHERE hotelID=? and email=?";
+
+        try {
+            con = db.getConncetion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, hotelID);
+            stmt.setString(2, email);
+
+            int out = stmt.executeUpdate();
+            if (out == 1) {
+                System.out.println("Hotel Email Delete Query Executed Successfully");
+            } else {
+                System.out.println("Error in Hotel Email Delete Query Execution");
+            }
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error Deleting Hotel Email: " + e.getMessage();
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Hotel Email Deleted Successfully";
+        }
+
+        return message;
+    }
+
+
+
+
+
     //testing Service
 //    public static void main(String[] args)  throws Exception{
 //        HotelService hs = new HotelService();
-////        // adding hotel to existing chain(WORKS)
-////        Hotel test = new Hotel(99, "testStreet", "testCity", "testCountry",100,1);
-////        hs.createHotel(test);
-////
+//        String res = "";
+//        // adding hotel to existing chain(WORKS)
+//        Hotel test = new Hotel(99, "testStreet", "testCity", "testCountry",100,1);
+//        hs.createHotel(test);
+//
 ////        //Testing hotel update(WORKS)
 ////        test.setCity("CapitalCity");
 ////        hs.updateHotel(test);
-////
-////        String res = hs.deleteHotel(test.getHotelID());
-////        System.out.println(res);
+//
+//        res = hs.insertHotelEmail(test.getHotelID(), "email@test");
+//        System.out.println(res);
+//        res = hs.insertHotelNumber(test.getHotelID(), "num-num-test");
+//        System.out.println(res);
+//
+//        res = hs.deleteHotelEmail(test.getHotelID(), "email@test");
+//        System.out.println(res);
+//        res = hs.deleteHotelNumber(test.getHotelID(), "num-num-test");
+//        System.out.println(res);
+//
+//
+//        res = hs.deleteHotel(test.getHotelID());
+//        System.out.println(res);
 //
 ////        List<Hotel> hotels = hs.getHotelsByCountry("Japan");
 ////        for (Hotel hotel: hotels) {
 ////            System.out.println(hotel.getCity());
 ////        }
-//
 //    }
 
 
