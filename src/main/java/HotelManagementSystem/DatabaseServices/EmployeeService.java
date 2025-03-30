@@ -2,8 +2,7 @@ package HotelManagementSystem.DatabaseServices;
 
 import HotelManagementSystem.Database;
 import HotelManagementSystem.DatabaseEntities.Employee;
-import HotelManagementSystem.DatabaseEntities.Person;
-import HotelManagementSystem.DatabaseEntities.Room;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
