@@ -9,13 +9,16 @@
     <body>
         <h2>Select User Type</h2>
 
-        <a href="customerRoomView.jsp">
+
         <div style="border: 5px solid black">
             <h4>Customer</h4>
             <h6>functions</h6>
-            <p>View Rooms and Creating Bookings<p>
+            <a href="customerRoomView.jsp">
+            <p>View Rooms<p>
+            </a>
+            <p>Book Rooms<p>
         </div>
-        </a>
+
 
         <br/>
 

@@ -150,9 +150,12 @@ create table booking(
  check_in_date date not null, 
  check_out_date date not null, 
  booking_date date not null, 
- --roomInfo
- customer_id Serial references customer --on delete cascade --ID
- 
+ room_num integer,
+ hotelID serial,
+ customer_id Serial references customer, --on delete cascade --ID
+
+ Foreign Key(hotelID, room_num) references room
+
  --,constraint validCheckIn check (),
  --constraint validCheckOut check (),
  --constraint validBooking check ()
@@ -166,7 +169,6 @@ rentalID serial primary key,
 employee_id serial references employee, -- on delete cascade,
 room_num integer,
 hotelID serial, 
-booking_id Serial references booking,-- on delete cascade,
 customer_id Serial references customer,-- on delete cascade,
 check_in_date date not null,
 check_out_date date not null,

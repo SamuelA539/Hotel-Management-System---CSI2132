@@ -9,6 +9,7 @@
 <%@ page import="HotelManagementSystem.DatabaseServices.HotelChainService" %>
 <%@ page import="java.util.ArrayList" %>
 
+
 <%
     RoomService roomService = new RoomService();
     HotelService hotelService = new HotelService();
@@ -50,12 +51,12 @@
             var hotelFilter = document.getElementById("hotelFilter");
             var selectedChainId = chainFilter.value;
 
-            // Clear current hotel options except the first "All Hotels" option
+            // clear everything but the all hotels option
             while (hotelFilter.options.length > 1) {
                 hotelFilter.remove(1);
             }
 
-            // If "All Chains" is selected, show all hotels
+            // if all chains is selected, show all hotels
             if (selectedChainId === "") {
                 allHotels.forEach(function(hotel) {
                     var option = document.createElement("option");
@@ -85,13 +86,13 @@
             var extendableFilter = document.getElementById("extendableFilter").value;
             var damagedFilter = document.getElementById("damagedFilter").value;
 
-            // Get all room rows (skip the first two rows which are headers and filter controls)
+            // get all room rows
             var rows = document.querySelectorAll("tbody tr");
             for (var i = 2; i < rows.length; i++) {
                 var row = rows[i];
                 var showRow = true;
 
-                // Chain filter
+                // hotel chain filter
                 if (chainFilter !== "") {
                     var chainCell = row.cells[0].textContent;
                     var selectedChainName = document.getElementById("chainFilter").options[document.getElementById("chainFilter").selectedIndex].text;
@@ -100,7 +101,7 @@
                     }
                 }
 
-                // Hotel filter
+                // hotel filter
                 if (hotelFilter !== "" && showRow) {
                     var hotelCell = row.cells[1].textContent;
                     if (hotelCell !== hotelFilter) {
@@ -108,7 +109,7 @@
                     }
                 }
 
-                // Price filter
+                // price filter
                 if (priceFilter !== "" && showRow) {
                     var priceCell = parseFloat(row.cells[6].textContent);
                     var priceLimit = parseFloat(priceFilter);
@@ -121,7 +122,7 @@
                     }
                 }
 
-                // Capacity filter
+                // capacity filter
                 if (capacityFilter !== "" && showRow) {
                     var capacityCell = row.cells[7].textContent.toLowerCase();
                     if (capacityCell !== capacityFilter) {
@@ -129,7 +130,7 @@
                     }
                 }
 
-                // View type filter
+                // view type filter
                 if (viewTypeFilter !== "" && showRow) {
                     var viewTypeCell = row.cells[8].textContent.toLowerCase();
                     if (viewTypeCell !== viewTypeFilter) {
@@ -137,7 +138,7 @@
                     }
                 }
 
-                // Extendable filter
+                // extendable filter
                 if (extendableFilter !== "" && showRow) {
                     var extendableCell = row.cells[9].textContent.toLowerCase();
                     var extendableValue = extendableFilter === "true" ? "yes" : "no";
@@ -146,11 +147,23 @@
                     }
                 }
 
-                // Damaged filter
+                // damaged filter
                 if (damagedFilter !== "" && showRow) {
                     var damagedCell = row.cells[10].textContent.toLowerCase();
                     var damagedValue = damagedFilter === "false" ? "no" : "yes";
                     if (damagedCell !== damagedValue) {
+                        showRow = false;
+                    }
+                }
+
+                // availability filter
+                if (availabilityFilter !== "" && showRow) {
+                    var availabilityCell = row.cells[11].textContent.toLowerCase();
+                    if (availabilityFilter === "available" && availabilityCell !== "available") {
+                        showRow = false;
+                    } else if (availabilityFilter === "booked" && availabilityCell !== "booked") {
+                        showRow = false;
+                    } else if (availabilityFilter === "rented" && availabilityCell !== "rented") {
                         showRow = false;
                     }
                 }
@@ -214,9 +227,9 @@
                     <td>
                         <select id="priceFilter">
                             <option value="">Any Price</option>
-                            <option value="299"><$300</option>
-                            <option value="399"><$400</option>
-                            <option value="499"><$500</option>
+                            <option value="300"><$300</option>
+                            <option value="400"><$400</option>
+                            <option value="500"><$500</option>
                             <option value="10000">$500+</option>
                         </select>
                     </td>
@@ -253,6 +266,14 @@
                         <select id="damagedFilter">
                             <option value="">Any</option>
                             <option value="false">No Damage</option>
+                        </select>
+                    </td>
+                    td>
+                        <select id="availabilityFilter">
+                            <option value="">Any Status</option>
+                            <option value="available">Available</option>
+                            <option value="booked">Booked</option>
+                            <option value="rented">Rented</option>
                         </select>
                     </td>
                 </tr>
