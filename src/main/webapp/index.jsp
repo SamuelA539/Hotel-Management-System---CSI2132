@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +16,9 @@
             <a href="customerRoomView.jsp">
             <p>View Rooms<p>
             </a>
+            <a href="customerBookRoom.jsp">
             <p>Book Rooms<p>
+            </a>
         </div>
 
 
