@@ -12,8 +12,6 @@ import java.util.List;
 //allows getting of rooms from DB using different categories
     //Complex Queries with no Lists VS Simple Queries with list sorting
 public class RoomService {
-    //TODO: +queries
-    //  INSERT & UPDATE & DELETE related tables
     //the dates (start, end) of booking or renting ?
 
 
@@ -75,6 +73,8 @@ public class RoomService {
         }
     }
 
+
+    //Database Info Editing Methods
     public String createRoom(Room room) throws Exception {
         String message = "";
         Connection con = null;
@@ -191,8 +191,8 @@ public class RoomService {
         return message;
     }
 
+    //Related Table services
 
-//Related Table services
     String roomAmenityRelation = "roomamenitie";
     public String addRoomAmenity(int roomNum, int hotelID, String amenity) throws Exception {
         String message = "";

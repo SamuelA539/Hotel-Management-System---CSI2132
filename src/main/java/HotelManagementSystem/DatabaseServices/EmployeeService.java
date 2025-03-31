@@ -1,15 +1,77 @@
 package HotelManagementSystem.DatabaseServices;
 
 import HotelManagementSystem.Database;
+import HotelManagementSystem.DatabaseEntities.Customer;
 import HotelManagementSystem.DatabaseEntities.Employee;
 import HotelManagementSystem.DatabaseEntities.Person;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeService {
-    //TODO:
-    // INSERT & UPDATE & DELETE related tables
+
+    public List<Employee> getEmployees() throws Exception{
+        Database db = new Database();
+        List<Employee> employees = new ArrayList<Employee>();
+
+        String query = "SELECT * FROM employee";
+
+        try(Connection con = db.getConncetion()) {
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            System.out.println(rs == null);
+
+            //ResultSet Exception handling
+            if (rs == null) {
+                System.out.println("rs null");
+                throw new RuntimeException("Result Set Null");
+                //System.out.println(rs.getStatement());
+            } else {
+                Exception warning = rs.getWarnings();
+                if (warning != null) {
+                    System.out.println(warning.getMessage());
+                    throw warning;
+                }
+
+                while (rs.next()) {
+//                    System.out.println("row: " + rs.getRow());
+//                    System.out.println("Was null: " + rs.wasNull());
+//                    System.out.println(rs.getInt("room_number"));
+
+                    Employee emp = new Employee(
+                            rs.getString("firstName"),
+                            rs.getString("middleName"),
+                            rs.getString("lastName"),
+                            rs.getString("address"),
+                            rs.getString("ID_type"),
+                            rs.getInt("personalID"),
+                            rs.getInt("EmployeeID"),
+                            rs.getInt("hotel_id")
+                    );
+                    employees.add(emp);
+                }
+                rs.close();
+            }
+            stmt.close();
+            con.close();
+            db.close();
+
+            //Exception if 0 rooms returned
+            if (employees.isEmpty()) {
+                System.out.println("0 rooms");
+                //throw new RuntimeException("0 Rooms retrieved");
+            }
+
+            return employees;
+        } catch (Exception e) {
+            throw new Exception("Error Getting Customers: " + e.getMessage());
+        }
+    }
+
+    //getEmployeeRoles(int empID) throws Exception {}
 
     //create Employee
     public String createEmployee(Employee emp) throws Exception{
@@ -53,8 +115,7 @@ public class EmployeeService {
         return message;
     }
 
-    //update Employee
-        //TODO what attributes can change? (hotelID)
+    //what attributes can change(hotelID)?
     public String updateEmployee(Employee emp) throws Exception{
         String message = "";
 
@@ -128,7 +189,7 @@ public class EmployeeService {
     }
 
 
-//Related Table services
+    //Related Table services
     String employeeRoleRelation = "employeerole";
     public String insertEmployeeRole(int empID, String role) throws Exception {
         String message = "";
@@ -206,20 +267,20 @@ public class EmployeeService {
 
 
 //
-//    public static void main(String[] args) throws Exception {
-//        EmployeeService es = new EmployeeService();
-//        String res = "";
-//
-//        // adding employee to existing hotel(WORKS)
-//        Person p = new Person("first", "M.", "last","testStreet","passport",999 );
-//        Employee test = new Employee(p, 999, 101);
-//        es.createEmployee(test);
-//
-////        // updating employee with existing hotel(WORKS)
-////        test.getEmployee().setFirstName("Tim");
-////        String res = es.updateEmployee(test);
-////        System.out.println(res);
-//
+    public static void main(String[] args) throws Exception {
+        EmployeeService es = new EmployeeService();
+        String res = "";
+
+        // adding employee to existing hotel(WORKS)
+        Person p = new Person("first", "M.", "last","testStreet","passport",999 );
+        Employee test = new Employee(p, 999, 101);
+        es.createEmployee(test);
+
+//        // updating employee with existing hotel(WORKS)
+//        test.getEmployee().setFirstName("Tim");
+//        String res = es.updateEmployee(test);
+//        System.out.println(res);
+
 //        res = es.insertEmployeeRole(test.getEmployeeID(), "test");
 //        System.out.println(res);
 //        res = es.deleteEmployeeRole(test.getEmployeeID(),"test");
@@ -227,7 +288,12 @@ public class EmployeeService {
 //
 //        res = es.deleteEmployee(test.getEmployeeID(), 0);
 //        System.out.println(res);
-//    }
+
+        List<Employee> emps = es.getEmployees();
+        for (Employee emp : emps) {
+            System.out.println(emp.getEmployeeID());
+        }
+    }
 
 
 }

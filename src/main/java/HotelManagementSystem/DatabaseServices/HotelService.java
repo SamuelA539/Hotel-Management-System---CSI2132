@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotelService {
-    //TODO:
-    //  INSERT & UPDATE & DELETE related tables
+
+    //Hotel getters
 
     //returns all hotels
     public List<Hotel> getHotels() throws Exception {
@@ -161,7 +161,7 @@ public class HotelService {
     }
 
     //updateHotel
-        //TODO what attributes can change?(HotelChainID)
+    //what attributes can change?(HotelChainID)
     public String updateHotel(Hotel hotel) throws Exception {
         Connection con = null;
         String message = "";
