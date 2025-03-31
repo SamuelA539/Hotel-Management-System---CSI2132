@@ -110,6 +110,14 @@ ArrayList<Message> messages;
                                     <button> Edit </button>
                             </a>
                         </td>
+
+                        <form method="POST" action="deleteEmployee.jsp">
+                            <td>
+                                <input type="hidden" value="<%= emp.getEmployeeID() %>" name="empID">
+                                <button style="all: unset; cursor: pointer;">Delete Employee</button>
+                            </td>
+                        </form>
+
                     </tr>
                 <% } %>
 

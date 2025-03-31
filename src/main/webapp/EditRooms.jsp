@@ -53,7 +53,7 @@ ArrayList<Message> messages;
                 <input type="text" name="viewType" id="viewType" ></br>
 
                 <input type="button" id="extendable" name="extendable" onclick="toggleExtendableBtn()">
-                <input type="button" id="damaged" name="damaged" onlick="toggleDamagedBtn()">
+                <input type="button" id="damaged" name="damaged" onclick="toggleDamagedBtn()">
             </form>
 
             <button type="submit" form="dialogForm">Update</button>
@@ -112,6 +112,15 @@ ArrayList<Message> messages;
                                     <button> Edit </button>
                             </a>
                         </td>
+
+                        <form method="POST" action="deleteRoom.jsp">
+                            <td>
+                                <input type="hidden" value="<%= room.getHotelID() %>" name="hotelId">
+                                <input type="hidden" value="<%= room.getRoomNum() %>" name="roomNum">
+                                <button style="all: unset; cursor: pointer;">Delete Room</button>
+                            </td>
+                        </form>
+
                     </tr>
                 <% } %>
 

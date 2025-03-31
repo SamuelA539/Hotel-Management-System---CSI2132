@@ -13,8 +13,8 @@
         Float.valueOf(request.getParameter("price")),
         request.getParameter("capacity"),
         request.getParameter("viewType"),
-        Boolean.valueOf(request.getParameter("extendableBtn")),
-        Boolean.valueOf(request.getParameter("damagedBtn")),
+        Boolean.valueOf(request.getParameter("extendable")),
+        Boolean.valueOf(request.getParameter("damaged")),
         Integer.valueOf(request.getParameter("hotelID"))
     );
 
@@ -22,9 +22,11 @@
 
     try {
         String val = roomService.updateRoom(room);
+        System.out.println(val);
         if (val.contains("Error") || val.contains("error")) msg = new Message("error", val);
         else msg = new Message("success", val);
     } catch (Exception e) {
+        System.out.println(e.getMessage());
         e.printStackTrace();
         msg = new Message("error", "Error while updating Hotel");
     }
@@ -33,19 +35,6 @@
     messages.add(msg);
 
     session.setAttribute("messages", messages);
-    //response.sendRedirect("EditRooms.jsp");
+    response.sendRedirect("EditRooms.jsp");
 %>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <%=request.getParts ()%>
-</body>
-</html>

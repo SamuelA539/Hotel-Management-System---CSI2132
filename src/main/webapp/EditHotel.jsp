@@ -110,6 +110,14 @@
                                <button> Edit </button>
                             </a>
                         </td>
+
+                        <form method="POST" action="deleteHotel.jsp">
+                            <td>
+                                <input type="hidden" value="<%= hotel.getHotelID() %>" name="hotelID">
+                                <button style="all: unset; cursor: pointer;">Delete Hotel</button>
+                            </td>
+                        </form>
+
                     </tr>
                 <% } %>
 

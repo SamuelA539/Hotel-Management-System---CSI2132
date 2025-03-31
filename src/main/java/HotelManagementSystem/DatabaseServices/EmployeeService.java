@@ -158,7 +158,7 @@ public class EmployeeService {
         return message;
     }
 
-    public String deleteEmployee(int empID, int hotelID) throws Exception {
+    public String deleteEmployee(int empID) throws Exception {
         String message = "";
         Connection con = null;
 
@@ -286,7 +286,7 @@ public class EmployeeService {
 //        res = es.deleteEmployeeRole(test.getEmployeeID(),"test");
 //        System.out.println(res);
 //
-//        res = es.deleteEmployee(test.getEmployeeID(), 0);
+//        res = es.deleteEmployee(test.getEmployeeID());
 //        System.out.println(res);
 
         List<Employee> emps = es.getEmployees();

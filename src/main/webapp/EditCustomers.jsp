@@ -67,7 +67,7 @@ ArrayList<Message> messages;
 
     <h2>Customer Info</h2>
 
-    <button>Add Customer</button>
+    <button >Add Customer</button>
     <br/>
 
 
@@ -103,6 +103,14 @@ ArrayList<Message> messages;
                                     <button> Edit </button>
                             </a>
                         </td>
+
+                        <form method="POST" action="deleteCustomer.jsp">
+                            <td>
+                                <input type="hidden" value="<%= cust.getCustomerID() %>" name="custID">
+                                <button style="all: unset; cursor: pointer;">Delete Customer</button>
+                            </td>
+                        </form>
+
                     </tr>
                 <% } %>
 
@@ -112,7 +120,6 @@ ArrayList<Message> messages;
     <% } %>
 
      <script>
-
                 function setDialogFields(row) {
                     document.getElementById("customerID").value = row.dataset.custid;
                     document.getElementById("firstName").value = row.dataset.first;
