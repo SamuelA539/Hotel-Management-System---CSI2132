@@ -20,5 +20,22 @@
 
 <body>
     <h2>Database Modification Page</h2>
-    <p>Under Construction</p>
+
+
+    <a href="EditHotel.jsp">
+        <button> View Hotels </button>
+    </a>
+
+    <a href="EditRooms.jsp">
+    <button> Edit Rooms </button>
+    </a>
+
+    <a href="EditCustomers.jsp">
+    <button> Edit Customers </button>
+    </a>
+
+    <a href="EditEmployees.jsp">
+    <button> Edit Employees </button>
+    </a>
+
 </body>

@@ -4,12 +4,73 @@ import HotelManagementSystem.Database;
 import HotelManagementSystem.DatabaseEntities.Customer;
 import HotelManagementSystem.DatabaseEntities.Person;
 
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerService {
+
+    public List<Customer> getCustomers() throws Exception {
+        Database db = new Database();
+        List<Customer> customers = new ArrayList<Customer>();
+
+        String query = "SELECT * FROM customer";
+
+        try(Connection con = db.getConncetion()) {
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            System.out.println(rs == null);
+
+            //ResultSet Exception handling
+            if (rs == null) {
+                System.out.println("rs null");
+                throw new RuntimeException("Result Set Null");
+                //System.out.println(rs.getStatement());
+            } else {
+                Exception warning = rs.getWarnings();
+                if (warning != null) {
+                    System.out.println(warning.getMessage());
+                    throw warning;
+                }
+
+                while (rs.next()) {
+//                    System.out.println("row: " + rs.getRow());
+//                    System.out.println("Was null: " + rs.wasNull());
+//                    System.out.println(rs.getInt("room_number"));
+
+                    Customer customer = new Customer(
+                            rs.getString("firstname"),
+                            rs.getString("middlename"),
+                            rs.getString("lastname"),
+                            rs.getString("address"),
+                            rs.getString("id_type"),
+                            rs.getInt("idnumber"),
+                            rs.getInt("customerID")
+                    );
+                    customers.add(customer);
+                }
+                rs.close();
+            }
+            stmt.close();
+            con.close();
+            db.close();
+
+            //Exception if 0 rooms returned
+            if (customers.isEmpty()) {
+                System.out.println("0 rooms");
+                //throw new RuntimeException("0 Rooms retrieved");
+            }
+
+            return customers;
+        } catch (Exception e) {
+            throw new Exception("Error Getting Customers: " + e.getMessage());
+        }
+    }
 
     //create Customer
     public String createCustomer(Customer cust) throws Exception{
@@ -129,15 +190,15 @@ public class CustomerService {
     }
 
 //
-//    public static void main(String[] args) throws Exception{
-//        CustomerService cs = new CustomerService();
-//
-//        Person p = new Person("first", "M.", "last","testStreet","passport",999 );
-//        Customer test = new Customer(p, 199 );
-//
-////        adding Customer(WORKS)
-//        cs.createCustomer(test);
-//
+    public static void main(String[] args) throws Exception{
+        CustomerService cs = new CustomerService();
+
+        Person p = new Person("first", "M.", "last","testStreet","passport",999 );
+        Customer test = new Customer(p, 199 );
+
+//        adding Customer(WORKS)
+        cs.createCustomer(test);
+
 //        //Updating customer ()
 //        test.getCustomer().setFirstName("Tom");
 //        String res = cs.updateCustomer(test);
@@ -146,6 +207,10 @@ public class CustomerService {
 //        //deleting customer
 //        res = cs.deleteCustomer(test.getCustomerID());
 //        System.out.println(res);
-//    }
+        List<Customer> custs = cs.getCustomers();
+        for (Customer cust: custs) {
+            System.out.println(cust.getCustomerID());
+        }
+    }
 
 }
