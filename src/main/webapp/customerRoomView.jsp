@@ -156,18 +156,6 @@
                     }
                 }
 
-                // availability filter
-                if (availabilityFilter !== "" && showRow) {
-                    var availabilityCell = row.cells[11].textContent.toLowerCase();
-                    if (availabilityFilter === "available" && availabilityCell !== "available") {
-                        showRow = false;
-                    } else if (availabilityFilter === "booked" && availabilityCell !== "booked") {
-                        showRow = false;
-                    } else if (availabilityFilter === "rented" && availabilityCell !== "rented") {
-                        showRow = false;
-                    }
-                }
-
                 // Show/hide row based on filters
                 row.style.display = showRow ? "" : "none";
             }
@@ -266,14 +254,6 @@
                         <select id="damagedFilter">
                             <option value="">Any</option>
                             <option value="false">No Damage</option>
-                        </select>
-                    </td>
-                    td>
-                        <select id="availabilityFilter">
-                            <option value="">Any Status</option>
-                            <option value="available">Available</option>
-                            <option value="booked">Booked</option>
-                            <option value="rented">Rented</option>
                         </select>
                     </td>
                 </tr>

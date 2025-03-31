@@ -18,8 +18,8 @@ create function archiveBooking() returns trigger as $BODY$
 	END
 	$BODY$ language plpgsql;
 
-drop trigger if exists archiveBooking on Booking cascade;
-create trigger archiveBooking after Insert on Booking 
+drop trigger if exists archiveBooking on booking cascade;
+create trigger archiveBooking after Insert on booking
 	for each row Execute function archiveBooking();
 
 
@@ -38,8 +38,8 @@ create function archiveRenting() returns trigger as $BODY$
 	END $BODY$ language plpgsql;
 
 
-drop trigger if exists archiveRenting on Renting cascade;
-create trigger archiveRenting after Insert on Renting 
+drop trigger if exists archiveRenting on renting cascade;
+create trigger archiveRenting after Insert on renting
 	for each row execute function archiveRenting();
 
 ----------------------------------------------------

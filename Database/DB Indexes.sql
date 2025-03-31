@@ -1,3 +1,4 @@
+SET search_path = project;
 --indexes
 
 -- index on the customer search

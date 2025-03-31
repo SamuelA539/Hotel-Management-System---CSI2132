@@ -1,3 +1,4 @@
+SET search_path = project;
 -- first view to see available rooms per area
 create or replace view available_rooms_per_area as
 -- grab the three sources needed for the view

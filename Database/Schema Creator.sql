@@ -1,8 +1,8 @@
 SET search_path = project;
 
---todo 
+--todo
 	--cascades (for Inserts )
-	-- some constraints 
+	-- some constraints
 	--triggers
 
 
@@ -70,10 +70,10 @@ Primary Key(hotelID, phoneNum)
 drop table if exists room cascade;
 create table room(
 room_number Integer,
-price numeric(8,2), 
+price numeric(8,2),
 capacity varchar(30),
-view_type varchar(15), 
-is_extendable boolean not null, 
+view_type varchar(15),
+is_extendable boolean not null,
 is_damaged boolean not null,
 hotel_id Serial references hotel ON delete cascade,
 
@@ -103,11 +103,11 @@ Foreign key(hotelID, roomNum) references room on delete cascade
 
 drop table if exists employee cascade;
 create table employee(
-EmployeeID Serial Primary Key, 
+EmployeeID Serial Primary Key,
 firstName varchar(50) not null,
 middleName varchar(50),
 lastName varchar(50) not null,
-address varchar(100) not null, 
+address varchar(100) not null,
 ID_type varchar(25) not null,
 personalID Numeric not null,
 hotel_id Serial references hotel on delete cascade
@@ -119,13 +119,13 @@ create table employee_role(
 EmployeeID serial references employee on delete cascade,
 role varchar(75),
 Primary key(EmployeeID, role)
-); 
+);
 
 -------------------------------------------------
 
 drop table if exists customer cascade;
 create table customer(
-customerID Serial Primary Key,  
+customerID Serial Primary Key,
 firstName varchar(30) not null,
 middleName varchar(30),
 lastName varchar(30) not null,
@@ -147,9 +147,9 @@ Constraint validIDtype check (ID_type = 'Drivers Licence' or ID_type ='Passport'
 drop table if exists booking cascade;
 create table booking(
  bookingID Serial Primary Key,
- check_in_date date not null, 
- check_out_date date not null, 
- booking_date date not null, 
+ check_in_date date not null,
+ check_out_date date not null,
+ booking_date date not null,
  room_num integer,
  hotelID serial,
  customer_id Serial references customer, --on delete cascade --ID
@@ -165,10 +165,10 @@ create table booking(
 
 drop table if exists renting cascade;
 create table renting(
-rentalID serial primary key, 
+rentalID serial primary key,
 employee_id serial references employee, -- on delete cascade,
 room_num integer,
-hotelID serial, 
+hotelID serial,
 customer_id Serial references customer,-- on delete cascade,
 check_in_date date not null,
 check_out_date date not null,
@@ -184,12 +184,12 @@ drop table if exists archive cascade;
 create table archive(
  archiveID varchar(15) Primary Key,  --booking/rental ID
  archive_date date,
- room_num integer, 
- hotelID serial, 
- check_in_date date, 
- check_out_date date, 
- booking_date date, 
- customer_ID varchar(30), 
+ room_num integer,
+ hotelID serial,
+ check_in_date date,
+ check_out_date date,
+ booking_date date,
+ customer_ID varchar(30),
  employee_id varchar(30)
 );
 
@@ -202,8 +202,8 @@ create table owns(
  chainID Serial references hotel_chain ON Delete CAscade,
  hotelID Serial references hotel ON DElete CAscade,
  star_rating Integer,
- 
+
  Constraint minStars check (0 < star_rating and star_rating < 6),
- 
+
  Primary Key(chainID, hotelID)
 );

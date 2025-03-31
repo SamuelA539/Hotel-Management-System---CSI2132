@@ -1,3 +1,4 @@
+SET search_path = project;
 --returns office addresses
 select Office_address from hotel_chain HC;
 
