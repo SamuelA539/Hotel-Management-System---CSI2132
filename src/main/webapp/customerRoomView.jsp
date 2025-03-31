@@ -7,24 +7,47 @@
 <%@ page import="HotelManagementSystem.DatabaseServices.HotelService" %>
 <%@ page import="HotelManagementSystem.DatabaseEntities.HotelChain" %>
 <%@ page import="HotelManagementSystem.DatabaseServices.HotelChainService" %>
+<%@ page import="HotelManagementSystem.DatabaseEntities.Booking" %>
+<%@ page import="HotelManagementSystem.DatabaseServices.BookingService" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 
 <%
     RoomService roomService = new RoomService();
     HotelService hotelService = new HotelService();
     HotelChainService hotelChainService = new HotelChainService();
+    BookingService bookingService = new BookingService();
 
     List<Room> rooms = null;
     List<Hotel> hotels = null;
     List<HotelChain> hotelChains = null;
+    List<Booking> bookings = null;
     try {
         rooms = roomService.getRooms();
         hotels = hotelService.getHotels();
         hotelChains = hotelChainService.getHotelChains();
+        bookings = bookingService.getBookings();
     } catch (Exception e) {
         e.printStackTrace();
     }
+
+    String dateParam = request.getParameter("checkIn");
+    Date selectedDate = null;
+    if (dateParam != null && !dateParam.isEmpty()) {
+        try {
+            selectedDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateParam);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    String defaultCheckIn = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+    if (dateParam != null && !dateParam.isEmpty()) {
+        defaultCheckIn = dateParam;
+    }
+
 %>
 
 <!DOCTYPE html>
@@ -65,7 +88,7 @@
                     hotelFilter.add(option);
                 });
             } else {
-                // Only show hotels from the selected chain
+                // only show hotels from the selected chain
                 allHotels.forEach(function(hotel) {
                     if (hotel.chainID == selectedChainId) {
                         var option = document.createElement("option");
@@ -85,6 +108,7 @@
             var viewTypeFilter = document.getElementById("viewTypeFilter").value;
             var extendableFilter = document.getElementById("extendableFilter").value;
             var damagedFilter = document.getElementById("damagedFilter").value;
+            var availabilityFilter = document.getElementById("availabilityFilter").value;
 
             // get all room rows
             var rows = document.querySelectorAll("tbody tr");
@@ -156,6 +180,16 @@
                     }
                 }
 
+                // availability filter
+                if (availabilityFilter !== "" && showRow) {
+                    var availabilityCell = row.cells[11].textContent.toLowerCase();
+                    if (availabilityFilter === "available" && availabilityCell !== "available") {
+                        showRow = false;
+                    } else if (availabilityFilter === "booked" && availabilityCell !== "booked") {
+                        showRow = false;
+                    }
+                }
+
                 // Show/hide row based on filters
                 row.style.display = showRow ? "" : "none";
             }
@@ -166,6 +200,16 @@
 
 <body>
     <h2>Customer View</h2>
+    <div class="form-container">
+        <form method="get" action="">
+            <div class="form-group">
+                <label for="checkIn">Check Availability for Date:</label>
+                <input type="date" id="checkIn" name="checkIn" value="<%= defaultCheckIn %>" required>
+                <button type="submit">Check Availability</button>
+            </div>
+        </form>
+    </div>
+
     <% if (rooms == null || rooms.size() == 0) { %>
         <h4>No Hotel Rooms Found</h4>
     <%} else {%>
@@ -184,6 +228,7 @@
                     <th>ViewType</th>
                     <th>Extendable</th>
                     <th>Damaged</th>
+                    <th>Status</th>
                 </tr>
             </thead>
 
@@ -256,10 +301,18 @@
                             <option value="false">No Damage</option>
                         </select>
                     </td>
+
+                    <td>
+                        <select id="availabilityFilter">
+                            <option value="">Any Status</option>
+                            <option value="available">Available</option>
+                            <option value="booked">Booked</option>
+                        </select>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td colspan="11" style="text-align: center;">
+                    <td colspan="12" style="text-align: center;">
                         <button class="filter-button" onclick="applyFilters()">Apply Filters</button>
                     </td>
                 </tr>
@@ -283,6 +336,22 @@
                             }
                         }
                     }
+
+                    boolean isBooked = false;
+                    if (selectedDate != null && bookings != null) {
+                        for (Booking booking : bookings) {
+                            if (booking.getRoomNum() == room.getRoomNum() &&
+                                booking.getHotelID() == room.getHotelID()) {
+
+                                // Check if selected date is between check-in and check-out
+                                if (!selectedDate.before(booking.getCheckInDate()) &&
+                                    !selectedDate.after(booking.getCheckOutDate())) {
+                                    isBooked = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 %>
                     <tr>
                         <td><%= hotelChain != null ? hotelChain.getName() : "N/A" %></td>
@@ -296,6 +365,13 @@
                         <td><%= room.getViewType() %></td>
                         <td><%= room.isExtendable() ? "Yes" : "No" %></td>
                         <td><%= room.isDamaged() ? "Yes" : "No" %></td>
+                        <td>
+                            <% if (selectedDate == null) { %>
+                                Select date to check
+                            <% } else { %>
+                                <%= isBooked ? "Booked" : "Available" %>
+                            <% } %>
+                        </td>
                     </tr>
                 <% } %>
 

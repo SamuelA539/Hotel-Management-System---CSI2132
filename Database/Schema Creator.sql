@@ -141,9 +141,7 @@ Constraint validIDtype check (ID_type = 'Drivers Licence' or ID_type ='Passport'
 --------------------
 --     Events     --
 --------------------
---Cant be deleted must always be stored
 
--- make times into timestamps + double check
 drop table if exists booking cascade;
 create table booking(
  bookingID Serial Primary Key,
@@ -152,13 +150,9 @@ create table booking(
  booking_date date not null,
  room_num integer,
  hotelID serial,
- customer_id Serial references customer, --on delete cascade --ID
+ customer_id Serial references customer on delete cascade,
 
  Foreign Key(hotelID, room_num) references room
-
- --,constraint validCheckIn check (),
- --constraint validCheckOut check (),
- --constraint validBooking check ()
  );
 
 -------------------------------------------------
@@ -182,7 +176,7 @@ Foreign Key(hotelID, room_num) references room
 --------------------
 drop table if exists archive cascade;
 create table archive(
- archiveID varchar(15) Primary Key,  --booking/rental ID
+ archiveID varchar(15) Primary Key,
  archive_date date,
  room_num integer,
  hotelID serial,

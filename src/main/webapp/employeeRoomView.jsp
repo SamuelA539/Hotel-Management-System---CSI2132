@@ -3,14 +3,19 @@
 <%@ page import="java.util.List" %>
 <%@ page import="HotelManagementSystem.DatabaseEntities.Room" %>
 <%@ page import="HotelManagementSystem.DatabaseServices.RoomService" %>
+<%@ page import="HotelManagementSystem.DatabaseEntities.Booking" %>
+<%@ page import="HotelManagementSystem.DatabaseServices.BookingService" %>
 <%@ page import="java.util.ArrayList" %>
 
 <%
     RoomService roomService = new RoomService();
+    BookingService bookingService = new BookingService();
+
     List<Room> rooms = null;
+    List<Booking> bookings = null;
     try {
         rooms = roomService.getRooms();
-
+        bookings = bookingService.getBookings();
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -114,6 +119,38 @@
 
         </table>
     <% } %>
+    <h3>Existing Bookings</h3>
+    <% if (bookings == null || bookings.size() == 0) { %>
+        <h4>No Bookings Found</h4>
+    <%} else {%>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Check-in Date</th>
+                    <th>Check-out Date</th>
+                    <th>Booking Date</th>
+                    <th>Room Number</th>
+                    <th>Hotel ID</th>
+                    <th>Customer ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (Booking booking: bookings) { %>
+                    <tr>
+                        <td><%= booking.getBookingID() %></td>
+                        <td><%= booking.getCheckInDate() %></td>
+                        <td><%= booking.getCheckOutDate() %></td>
+                        <td><%= booking.getBookingDate() %></td>
+                        <td><%= booking.getRoomNum() %></td>
+                        <td><%= booking.getHotelID() %></td>
+                        <td><%= booking.getCustomer() %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    <% } %>
+
 
 </body>
 
