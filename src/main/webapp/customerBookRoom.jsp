@@ -94,10 +94,10 @@
                         }
 
                         String roomLabel = (hotelChain != null ? hotelChain.getName() + " - " : "") +
-                                         (roomHotel != null ? roomHotel.getCity() + ", " + roomHotel.getStreetAddress() + " - " : "") +
-                                         "Room #" + room.getRoomNum() + " (" + room.getCapacity() + ", $" + room.getPrice() + "/night)";
-                    %>
-                        <option value="<%= room.getRoomNum() %>"><%= roomLabel %></option>
+                          (roomHotel != null ? roomHotel.getCity() + ", " + roomHotel.getStreetAddress() + " - " : "") +
+                          "Room #" + room.getRoomNum() + " (" + room.getCapacity() + ", $" + room.getPrice() + "/night)";
+                        %>
+                        <option value="<%= roomHotel.getHotelID() %>-<%= room.getRoomNum() %>"><%= roomLabel %></option>
                     <% } %>
                 </select>
             </div>
@@ -170,8 +170,36 @@
         }
 
         function bookRoom() {
-            // Implement booking functionality here
-            alert('Booking functionality to be implemented');
+            const checkIn = document.getElementById('checkIn').value;
+            const checkOut = document.getElementById('checkOut').value;
+            const customerName = document.getElementById('customerName').value;
+            const customerID = document.getElementById('customerID').value;
+            const roomSelect = document.getElementById('roomSelect');
+
+            if (!checkIn || !checkOut || !customerName || !customerID || !roomSelect.value) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const roomIdParts = roomSelect.value.split('-');
+            if (roomIdParts.length !== 2) {
+                alert('Invalid room selection');
+                return;
+            }
+
+            const hotelID = parseInt(roomIdParts[0]);
+            const roomNum = parseInt(roomIdParts[1]);
+
+            const bookingData = {
+                checkInDate: checkIn,
+                checkOutDate: checkOut,
+                customerName: customerName,
+                customerID: customerID,
+                hotelID: hotelID,
+                roomNum: roomNum
+            };
+
+            bookings.createBooking(bookingData);
         }
     </script>
 
