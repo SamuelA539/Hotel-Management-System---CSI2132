@@ -16,7 +16,7 @@
             <a href="customerRoomView.jsp">
             <p>View Rooms<p>
             </a>
-            <a href="customerBookRoom.jsp">
+            <a href="AddBooking.jsp">
             <p>Book Rooms<p>
             </a>
         </div>
@@ -24,14 +24,16 @@
 
         <br/>
 
-        <a href="employeeRoomView.jsp">
         <div style="border: 5px solid black">
             <h4>Employee</h4>
             <h6>functions</h6>
+            <a href="employeeRoomView.jsp">
+            <p>View Rooms<p>
+            </a>
+            <a href="AddRental.jsp">
             <p>Create Rentals<p>
+            </a>
         </div>
-        </a>
-
         <a href="DataModification.jsp">
         <div style="border: 5px solid black">
             <h4>Edit Database</h4>

@@ -1,6 +1,6 @@
 package HotelManagementSystem.DatabaseEntities;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Renting {
 
@@ -13,6 +13,7 @@ public class Renting {
     private Booking booking;
     private int customer_id;
 
+    /*Constructor*/
     public Renting(int rentalID, int employee_id, int room_num, int hotelID, int customer_id, Date check_in_date, Date check_out_date) {
         this.rentalID = rentalID;
         this.employee_id = employee_id;
@@ -21,10 +22,7 @@ public class Renting {
         this.customer_id = customer_id;
         this.check_in_date = check_in_date;
         this.check_out_date = check_out_date;
-
     }
-
-    /*Constructor*/
 
     /*Getter*/
     public int getRentalID() { return rentalID; }
