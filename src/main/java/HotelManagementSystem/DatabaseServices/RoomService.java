@@ -98,6 +98,8 @@ public class RoomService {
             stmt.setBoolean(6, room.isDamaged());
             stmt.setInt(7, room.getHotelID());
 
+            System.out.println("SQL Query:" + stmt);
+
 
             int out = stmt.executeUpdate();
             if (out == 1) {

@@ -8,7 +8,7 @@ create function archiveBooking() returns trigger as $BODY$
 	Begin
 		if (TG_OP =  'INSERT') then 
 			Insert into archive select 
-				new.bookingID, current_date, new.room_num, new.hotelID, new.check_in_date, new.check_out_date, new.bookingID, new.customer_ID, new.employee_id;
+				new.bookingID, current_date, new.room_num, new.hotelID, new.check_in_date, new.check_out_date, new.booking_date, new.customer_ID, null;
 			return new;
 		-- elseif (TG_op ='UPDATE') then
 		-- 	Insert into archive select 
@@ -28,11 +28,12 @@ create function archiveRenting() returns trigger as $BODY$
 	Begin
 		if (TG_OP =  'INSERT') then 
 			Insert into archive select 
-				new.rentalID, current_date, new.room_num, new.hotelID, null, null, new.bookingID, new.customer_ID, new.employee_id;
+				new.rentalID, current_date, new.room_num, new.hotelID, new.check_in_date, new.check_out_date, null, new.customer_ID, new.employee_id;
 			return new;
 		-- elseif (TG_op ='UPDATE') then
-		-- 	Insert into archive select 
-		-- 		new.bookingID, current_date, new.room_num, new.hotelID, new.check_in_date, new.check_out_date, new.bookingID, new.customer_ID, new.employee_id;
+		-- 	Update archive SET archive_date=current_date, room_num=new.room_num, hotelid=new.hotelID, check_in_date=new.check_in_date ,check_out_date=new.check_out_date,
+		-- 	customer_id=new.customer_id, employee_id=new.employee_id
+		-- 		where rentalID = OLD.rentalID;
 		-- 	return new;
 		end if;
 	END $BODY$ language plpgsql;

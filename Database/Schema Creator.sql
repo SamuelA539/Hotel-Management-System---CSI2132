@@ -152,7 +152,7 @@ create table booking(
  hotelID serial,
  customer_id Serial references customer on delete cascade,
 
- Foreign Key(hotelID, room_num) references room
+ Foreign Key(hotelID, room_num) references room on delete cascade
  );
 
 -------------------------------------------------
@@ -160,14 +160,14 @@ create table booking(
 drop table if exists renting cascade;
 create table renting(
 rentalID serial primary key,
-employee_id serial references employee, -- on delete cascade,
+employee_id serial references employee on delete cascade,
 room_num integer,
 hotelID serial,
-customer_id Serial references customer,-- on delete cascade,
+customer_id Serial references customer on delete cascade,
 check_in_date date not null,
 check_out_date date not null,
 
-Foreign Key(hotelID, room_num) references room
+Foreign Key(hotelID, room_num) references room on delete cascade
 );
 
 

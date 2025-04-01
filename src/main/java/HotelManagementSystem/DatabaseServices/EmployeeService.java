@@ -47,7 +47,7 @@ public class EmployeeService {
                             rs.getString("lastName"),
                             rs.getString("address"),
                             rs.getString("ID_type"),
-                            rs.getInt("personalID"),
+                            rs.getLong("personalID"),
                             rs.getInt("EmployeeID"),
                             rs.getInt("hotel_id")
                     );
@@ -64,11 +64,10 @@ public class EmployeeService {
                 System.out.println("0 rooms");
                 //throw new RuntimeException("0 Rooms retrieved");
             }
-
-            return employees;
         } catch (Exception e) {
             throw new Exception("Error Getting Customers: " + e.getMessage());
         }
+        return employees;
     }
 
     //getEmployeeRoles(int empID) throws Exception {}
@@ -94,7 +93,7 @@ public class EmployeeService {
             stmt.setString(4, emp.getEmployee().getLastName());
             stmt.setString(5,  emp.getEmployee().getAddress());
             stmt.setString(6,  emp.getEmployee().getIdType());
-            stmt.setInt(7,  emp.getEmployee().getPersonalID());
+            stmt.setLong(7,  emp.getEmployee().getPersonalID());
             stmt.setInt(8,  emp.getHotelID());
 
             int out = stmt.executeUpdate();
@@ -135,7 +134,7 @@ public class EmployeeService {
             stmt.setString(3, emp.getEmployee().getLastName());
             stmt.setString(4,  emp.getEmployee().getAddress());
             stmt.setString(5,  emp.getEmployee().getIdType());
-            stmt.setInt(6,  emp.getEmployee().getPersonalID());
+            stmt.setLong(6,  emp.getEmployee().getPersonalID());
 
             stmt.setInt(7,  emp.getHotelID());
             stmt.setInt(8, emp.getEmployeeID());
@@ -173,14 +172,14 @@ public class EmployeeService {
 
             int out = stmt.executeUpdate();
             if (out == 1) {
-                System.out.println("Hotel Employee Query Executed Successfully");
+                System.out.println("Hotel Employee Deletion Query Executed Successfully");
             } else {
                 System.out.println("Error in Employee Deletion Query Execution");
             }
 
             stmt.close();
         } catch (Exception e) {
-            message = "Error deleteing Employee: " + e.getMessage();
+            message = "Error deleting Employee: " + e.getMessage();
         } finally {
             if (con != null) con.close();
             if (message.isEmpty()) message = "Successfully deleted Employee";
@@ -274,18 +273,24 @@ public class EmployeeService {
         // adding employee to existing hotel(WORKS)
         Person p = new Person("first", "M.", "last","testStreet","passport",999 );
         Employee test = new Employee(p, 999, 101);
-        es.createEmployee(test);
+        res = es.createEmployee(test);
+        System.out.println(res);
 
-//        // updating employee with existing hotel(WORKS)
-//        test.getEmployee().setFirstName("Tim");
-//        String res = es.updateEmployee(test);
-//        System.out.println(res);
 
+        // updating employee with existing hotel(WORKS)
+        test.getEmployee().setFirstName("Tim");
+        res = es.updateEmployee(test);
+        System.out.println(res);
+
+        //insert Role
 //        res = es.insertEmployeeRole(test.getEmployeeID(), "test");
 //        System.out.println(res);
+
+        //delete Role
 //        res = es.deleteEmployeeRole(test.getEmployeeID(),"test");
 //        System.out.println(res);
-//
+
+        //delete emp
 //        res = es.deleteEmployee(test.getEmployeeID());
 //        System.out.println(res);
 

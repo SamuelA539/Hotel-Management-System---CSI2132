@@ -18,7 +18,7 @@ public class Employee {
         this.hotelID = hotelID;
     }
 
-    public Employee(String firstName, String middleName, String lastName, String address, String idType, int personalID, int employeeID, int hotelID) {
+    public Employee(String firstName, String middleName, String lastName, String address, String idType, long personalID, int employeeID, int hotelID) {
         this.employee = new Person(firstName,middleName,lastName,address,idType,personalID);
         this.employeeID = employeeID;
         this.hotelID = hotelID;

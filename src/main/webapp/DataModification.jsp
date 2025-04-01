@@ -21,21 +21,48 @@
 <body>
     <h2>Database Modification Page</h2>
 
+    <div>
+        <a href="EditHotel.jsp">
+            <button> View Hotels </button>
+        </a>
+        <a href="AddHotel.jsp">
+            <button> Add Hotels </button>
+        </a>
+    </div>
 
-    <a href="EditHotel.jsp">
-        <button> View Hotels </button>
-    </a>
+    <br/>
 
-    <a href="EditRooms.jsp">
-    <button> Edit Rooms </button>
-    </a>
+    <div>
+        <a href="EditRooms.jsp">
+            <button> Edit Rooms </button>
+        </a>
+        <a href="AddRoom.jsp">
+            <button> Add Rooms </button>
+        </a>
+    </div>
 
-    <a href="EditCustomers.jsp">
-    <button> Edit Customers </button>
-    </a>
+    <br/>
 
-    <a href="EditEmployees.jsp">
-    <button> Edit Employees </button>
-    </a>
+    <div>
+        <a href="EditCustomers.jsp">
+            <button> Edit Customers </button>
+        </a>
+
+        <a href="AddCustomer.jsp">
+            <button> Add Customers </button>
+        </a>
+    </div>
+
+    <br/>
+
+    <div>
+        <a href="EditEmployees.jsp">
+            <button> Edit Employees </button>
+        </a>
+
+        <a href="AddEmployee.jsp">
+            <button> Add Employees </button>
+        </a>
+    </div>
 
 </body>

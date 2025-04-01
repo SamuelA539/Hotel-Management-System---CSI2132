@@ -49,7 +49,7 @@ public class CustomerService {
                             rs.getString("lastname"),
                             rs.getString("address"),
                             rs.getString("id_type"),
-                            rs.getInt("idnumber"),
+                            rs.getLong("idnumber"),
                             rs.getInt("customerID")
                     );
                     customers.add(customer);
@@ -93,7 +93,7 @@ public class CustomerService {
             stmt.setString(4, cust.getCustomer().getLastName());
             stmt.setString(5,  cust.getCustomer().getAddress());
             stmt.setString(6,  cust.getCustomer().getIdType());
-            stmt.setInt(7,  cust.getCustomer().getPersonalID());
+            stmt.setLong(7,  cust.getCustomer().getPersonalID());
 
             stmt.setDate(8, Date.valueOf(LocalDate.now())); //todo TEST
 
@@ -136,7 +136,7 @@ public class CustomerService {
             stmt.setString(3, cust.getCustomer().getLastName());
             stmt.setString(4,  cust.getCustomer().getAddress());
             stmt.setString(5,  cust.getCustomer().getIdType());
-            stmt.setInt(6,  cust.getCustomer().getPersonalID());
+            stmt.setLong(6,  cust.getCustomer().getPersonalID());
 
             stmt.setInt(7, cust.getCustomerID());
 

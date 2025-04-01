@@ -1,6 +1,7 @@
 SET search_path = project;
+
 --returns office addresses
-select Office_address from hotel_chain HC;
+select Office_address from hotelchain;
 
 --returns cities with hotels
 select distinct city, country

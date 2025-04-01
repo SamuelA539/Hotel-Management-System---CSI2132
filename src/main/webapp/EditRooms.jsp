@@ -52,12 +52,11 @@ ArrayList<Message> messages;
                 <input type="text" name="capacity" id="capacity" >
                 <input type="text" name="viewType" id="viewType" ></br>
 
-                <input type="button" id="extendable" name="extendable" onclick="toggleExtendableBtn()">
-                <input type="button" id="damaged" name="damaged" onclick="toggleDamagedBtn()">
+                <input type="checkbox" id="extendable" name="extendable">
+                <input type="checkbox" id="damaged" name="damaged">
             </form>
 
             <button type="submit" form="dialogForm">Update</button>
-            <button type="button" data-dismiss="dialog">Delete(Not working)</button>
         </div>
 
 
@@ -147,28 +146,6 @@ ArrayList<Message> messages;
 
                 document.getElementById("dialogForm").action = "Update-Room.jsp";
                 document.getElementById("dialogForm").method = "POST";
-            }
-
-            function toggleExtendableBtn() {
-                let extBtn = document.getElementById("extendable");
-                console.log("Pre toggle ",extBtn.value);
-                if (extBtn.value == "true") {
-                    extBtn.value = "false";
-                }
-                if (extBtn.value == "false") {
-                    extBtn.value = "true";
-                }
-                console.log("Post toggle ",extBtn.value);
-            }
-
-            function toggleDamagedBtn() {
-                let dmgBtn = document.getElementById("damaged");
-                if (dmgBtn.value == "true") {
-                    dmgBtn.value = "false";
-                }
-                if (dmgBtn.value == "false") {
-                    dmgBtn.value = "true";
-                }
             }
         </script>
 

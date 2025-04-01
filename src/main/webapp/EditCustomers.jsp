@@ -24,9 +24,9 @@ ArrayList<Message> messages;
     CustomerService customerService = new CustomerService();
     List<Customer> customers = null;
     try {
-        Person p = new Person("first", "M.", "last","testStreet","passport",999 );
-        Customer test = new Customer(p, 199 );
-        customerService.createCustomer(test);
+        //Person p = new Person("first", "M.", "last","testStreet","passport",999 );
+        //Customer test = new Customer(p, 199 );
+        //customerService.createCustomer(test);
         customers = customerService.getCustomers();
 
     } catch (Exception e) {
@@ -67,7 +67,9 @@ ArrayList<Message> messages;
 
     <h2>Customer Info</h2>
 
-    <button >Add Customer</button>
+
+     <button >Add Customer</button>
+
     <br/>
 
 

@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="HotelManagementSystem.DatabaseEntities.Room" %>
 <%@ page import="HotelManagementSystem.DatabaseServices.RoomService" %>
+<%@ page import="HotelManagementSystem.Message" %>
 <%@ page import="java.util.ArrayList" %>
 
 <%
@@ -24,16 +25,23 @@
         Integer.valueOf(request.getParameter("hotelID"))
     );
 
+    Message msg;
 
     try {
-        String val = roomService.updateRoom(room);
+        String val = roomService.createRoom(room);
         System.out.println(val);
-
+        if (val.contains("Error") || val.contains("error")) msg = new Message("error", val);
+        else msg = new Message("success", val);
     } catch (Exception e) {
         System.out.println(e.getMessage());
         e.printStackTrace();
+        msg = new Message("error", "Error while updating Hotel");
     }
 
-    response.sendRedirect("EditRooms.jsp");
+    ArrayList<Message> messages = new ArrayList<>();
+    messages.add(msg);
+
+    session.setAttribute("messages", messages);
+    response.sendRedirect("AddRoom.jsp");
 %>
 

@@ -26,9 +26,9 @@ ArrayList<Message> messages;
     EmployeeService employeeService = new EmployeeService();
     List<Employee> employees = null;
     try {
-        Person p = new Person("first", "M.", "last","testStreet","passport",999 );
-        Employee test = new Employee(p, 999, 101);
-        employeeService.createEmployee(test);
+        //Person p = new Person("first", "M.", "last","testStreet","passport",999 );
+        //Employee test = new Employee(p, 999, 101);
+        //employeeService.createEmployee(test);
         employees = employeeService.getEmployees();
     } catch (Exception e) {
         e.printStackTrace();
