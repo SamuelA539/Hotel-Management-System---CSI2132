@@ -45,11 +45,17 @@
         <h4>Edit Hotel<h4>
 
         <form id="dialogForm">
+            <label for="hotelID">hotelID</label>
             <input type="text" name="hotelID" id="hotelID" readonly></br>
+            <label for="numRooms">numRooms</label>
             <input type="text" name="numRooms" id="numRooms" ></br>
+            <label for="streetAddress">streetAddress</label>
             <input type="text" name="streetAddress" id="streetAddress" ></br>
+            <label for="city">city</label>
             <input type="text" name="city" id="city" ></br>
+            <label for="country">country</label>
             <input type="text" name="country" id="country" ></br>
+            <label for="hotelChainID">hotelChainID</label>
             <input type="text" name="hotelChainID" id="hotelChainID">
         </form>
 

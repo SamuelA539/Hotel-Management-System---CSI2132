@@ -49,17 +49,23 @@ ArrayList<Message> messages;
         <h4>Edit Employee<h4>
 
         <form id="dialogForm">
+            <label for="employeeID">employeeID</label>
             <input type="text" name="employeeID" id="employeeID" readonly></br>
 
-            <input type="text" name="firstName" id="firstName" >
-            <input type="text" name="middleName" id="middleName" >
-            <input type="text" name="lastName" id="lastName" >
+            <label for="firstName">firstName</label>
+            <input type="text" name="firstName" id="firstName" ></br>
+            <label for="customerID">middleName</label>
+            <input type="text" name="middleName" id="middleName" ></br>
+            <label for="lastName">lastName</label>
+            <input type="text" name="lastName" id="lastName" ></br>
+            <label for="address">address</label>
             <input type="text" name="address" id="address" ></br>
-
-            <input type="text" name="idType" id="idType" >
+            <label for="idType">idType</label>
+            <input type="text" name="idType" id="idType" ></br>
+            <label for="personalID">personalID</label>
             <input type="text" name="personalID" id="personalID" ></br>
-
-            <input type="text" name="hotelID" id="hotelID">
+            <label for="hotelID">hotelID</label>
+            <input type="text" name="hotelID" id="hotelID"></br>
         </form>
 
         <button type="submit" form="dialogForm">Update</button>

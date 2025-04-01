@@ -20,7 +20,7 @@ public class RoomService {
         Database db = new Database();
         List<Room> rooms = new ArrayList<Room>();
 
-        String query = "SELECT * FROM room";
+        String query = "SELECT * FROM room;";
 
         try(Connection con = db.getConncetion()) {
             PreparedStatement stmt = con.prepareStatement(query);
@@ -125,9 +125,9 @@ public class RoomService {
 
         Database db = new Database();
 
-        String insertQuery = "UPDATE Room set" +
+        String insertQuery = "UPDATE Room set " +
                 "price=?, capacity=?, view_type=?, is_extendable=?, is_damaged=? " +
-                "WHERE hotelID=? and room_number=?;";
+                "WHERE hotel_id=? and room_number=?;";
 
         try {
             con = db.getConncetion();
@@ -142,6 +142,8 @@ public class RoomService {
 
             stmt.setInt(6, room.getRoomNum());
             stmt.setInt(7, room.getHotelID());
+
+            System.out.println("SQL Query:" + stmt);
 
             int out = stmt.executeUpdate();
             if (out == 1) {

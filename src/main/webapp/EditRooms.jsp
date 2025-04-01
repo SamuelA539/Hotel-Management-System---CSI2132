@@ -45,14 +45,25 @@ ArrayList<Message> messages;
             <h4>Edit Employee<h4>
 
             <form id="dialogForm">
-                <input type="text" name="hotelID" id="hotelID" readonly>
+                <label for="hotelID">hotelID</label>
+                <input type="text" name="hotelID" id="hotelID" readonly></br>
+
+                <label for="roomNum">roomNum</label>
                 <input type="text" name="roomNum" id="roomNum" ></br>
 
-                <input type="text" name="price" id="price" >
-                <input type="text" name="capacity" id="capacity" >
+                <label for="price">price</label>
+                <input type="text" name="price" id="price" ></br>
+
+                <label for="capacity">capacity</label>
+                <input type="text" name="capacity" id="capacity" ></br>
+
+                <label for="viewType">viewType</label>
                 <input type="text" name="viewType" id="viewType" ></br>
 
-                <input type="checkbox" id="extendable" name="extendable">
+                <label for="extendable">extendable</label>
+                <input type="checkbox" id="extendable" name="extendable"></br>
+
+                <label for="damaged">damaged</label>
                 <input type="checkbox" id="damaged" name="damaged">
             </form>
 
@@ -97,7 +108,6 @@ ArrayList<Message> messages;
                         <td> <%= room.isDamaged() %> </td>
                         <td>
                             <a onclick="setDialogFields(this)"
-                                data-tggle="dialog"
                                 data-hotelid="<%= room.getHotelID() %>"
                                 data-roomnum="<%= room.getRoomNum() %>"
                                 data-price="<%= room.getPrice() %> "
@@ -141,8 +151,12 @@ ArrayList<Message> messages;
                 console.log(row.dataset.extendable);
                 console.log(row.dataset.damaged);
 
-                document.getElementById("extendable").value = row.dataset.extendable;
-                document.getElementById("damaged").value = row.dataset.damaged;
+                if (row.dataset.extendable === "true") {
+                    document.getElementById("extendable").checked = true;
+                }
+                if (row.dataset.damaged === "true") {
+                    document.getElementById("damaged").checked = true;
+                }
 
                 document.getElementById("dialogForm").action = "Update-Room.jsp";
                 document.getElementById("dialogForm").method = "POST";

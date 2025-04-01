@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HotelChainService {
     public List<HotelChain> getHotelChains() throws Exception {
-        String query = "SELECT * FROM hotelchain";
+        String query = "SELECT * FROM hotel_chain";
         Database db = new Database();
 
         List<HotelChain> chains = new ArrayList<>();

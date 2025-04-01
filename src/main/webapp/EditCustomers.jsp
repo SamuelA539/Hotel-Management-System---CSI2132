@@ -49,14 +49,21 @@ ArrayList<Message> messages;
             <h4>Edit Customer<h4>
 
             <form id="dialogForm">
+                <label for="customerID">customerID</label>
                 <input type="text" name="customerID" id="customerID" readonly></br>
 
-                <input type="text" name="firstName" id="firstName" >
-                <input type="text" name="middleName" id="middleName" >
-                <input type="text" name="lastName" id="lastName" >
+                <label for="firstName">firstName</label>
+                <input type="text" name="firstName" id="firstName" ></br>
+                <label for="middleName">middleName</label>
+                <input type="text" name="middleName" id="middleName" ></br>
+                <label for="lastName">lastName</label>
+                <input type="text" name="lastName" id="lastName" ></br>
+                <label for="address">address</label>
                 <input type="text" name="address" id="address" ></br>
 
-                <input type="text" name="idType" id="idType" >
+                <label for="idType">idType</label>
+                <input type="text" name="idType" id="idType" ></br>
+                <label for="personalID">personalID</label>
                 <input type="text" name="personalID" id="personalID" ></br>
 
             </form>

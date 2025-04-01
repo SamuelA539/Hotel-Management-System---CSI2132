@@ -16,7 +16,7 @@ public class HotelService {
 
     //returns all hotels
     public List<Hotel> getHotels() throws Exception {
-        String query = "SELECT * FROM hotel";
+        String query = "SELECT * FROM hotel;";
         Database db = new Database();
 
         List<Hotel> hotels = new ArrayList<>();
